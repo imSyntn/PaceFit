@@ -1,0 +1,179 @@
+header {
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 100px;
+    height: 60px;
+    backdrop-filter: blur(15px);
+    z-index: 10;
+
+    >img {
+        width: 50px;
+        filter: invert(100%);
+
+    }
+    >.routes {
+        width: 40vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        // border: 1px solid red;
+        a {
+            text-decoration: none;
+            svg {
+                font-size: 20px;
+            }
+        }
+    }
+}
+// .input-box {
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     // border: 1px solid black;
+//     width: 300px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     z-index: 111;
+//     transition: top 0.3s;
+
+//     >input {
+//         width: 250px;
+//         height: 35px;
+//         border: 2px solid gray;
+//         border-radius: 25px;
+//         font-size: 1.4rem;
+//         color: rgb(255, 255, 255);
+//         background-color: rgba(0, 0, 0, 0.753);
+//         padding-inline: 15px;
+//         filter: drop-shadow(0 0 2px gray);
+//     }
+
+//     >svg {
+//         font-size: 1.6rem;
+//         filter: drop-shadow(0 0 2px gray);
+//         fill: gray;
+//     }
+// }
+
+// .input-box.hide {
+//     top: -100px;
+// }
+
+// .Header {
+//     background: transparent;
+//     min-height: 60px;
+//     padding-inline: 8vw;
+//     position: relative;
+//     transition: all 0.3s;
+
+//     a {
+//         
+//         text-decoration: none;
+//         text-transform: uppercase;
+//         letter-spacing: 0.1rem;
+//         font-weight: bold;
+//     }
+//     a.active {
+//         color: transparent;
+//         background-image: linear-gradient(to right, #f9d423 0%, #ff4e50 100%);
+//         background-clip: text;
+//         -webkit-background-clip: text;
+//         -moz-background-clip: text;
+//     }
+
+//     >.non-mobile-view {
+//         display: flex;
+//         height: 60px;
+//         justify-content: space-between;
+//         align-items: center;
+
+//         >.logo {
+//             margin-inline: 20px;
+//             width: 50px;
+//             
+//         }
+
+//         >.Header-left {
+//             width: 200px;
+//             display: flex;
+//             justify-content: space-between;
+//         }
+
+//         >.Header-right {
+//             width: 200px;
+//             display: flex;
+//             justify-content: space-between;
+//         }
+//     }
+
+//     >.mobile-view {
+//         display: none;
+//     }
+
+//     >.mobile-view-accordian {
+//         display: none;
+//     }
+
+//     svg {
+//         cursor: pointer;
+//     }
+// }
+
+// .Header.blur {
+//     filter: blur(2px);
+// }
+
+// @media screen and (max-width:760px) {
+//     .Header {
+//         padding-inline: 11vw;
+
+//         >.non-mobile-view {
+//             display: none;
+//         }
+
+//         >.mobile-view {
+//             display: block;
+//             width: 100%;
+//             height: 60px;
+//             display: flex;
+//             align-items: center;
+//             justify-content: space-between;
+//             >.logo {
+//                 width: 50px;
+//             }
+//         }
+
+//         >.mobile-view-accordian {
+//             overflow: hidden;
+//             height: 100px;
+//             display: flex;
+//             flex-direction: column;
+//             align-items: center;
+//             justify-content: space-between;
+//             transition: height 0.3s;
+
+//             >.cart-search-user {
+//                 width: 100px;
+//                 display: flex;
+//                 justify-content: space-between;
+//             }
+//         }
+
+//         >.mobile-view-accordian.hide {
+//             height: 0px;
+//         }
+//     }
+// }
+
+// .Header-parent {
+//     position: fixed;
+//     top: 0;
+//     width: 100%;
+//     z-index: 115;
+// }

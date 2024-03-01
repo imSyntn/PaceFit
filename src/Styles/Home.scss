@@ -1,0 +1,51 @@
+.gallery-section {
+    padding: 50px 50px 0 50px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.remarks {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.advantages {
+    padding-inline: 50px;
+    margin-block: 20px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    min-height: 100px;
+    // border: 1px solid red;
+    border-bottom: 1px solid rgb(49, 49, 49);
+}
+
+
+// >video {
+//     width: 100vw;
+// }
+
+
+@keyframes updown {
+    0% {
+        top: 50%
+    }
+
+    25% {
+        top: 49.5%
+    }
+
+    50% {
+        top: 50%;
+    }
+
+    75% {
+        top: 50.5%;
+    }
+
+    100% {
+        top: 50%
+    }
+}

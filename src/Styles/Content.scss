@@ -1,0 +1,14 @@
+.Content {
+    margin-bottom: 15px;
+    >h1 {
+        margin-block: 15px;
+    }
+    .swipe {
+        cursor: grab;
+        height: 330px;
+    }
+    .swiper-scrollbar-drag {
+        background-color: #000000;
+        // height: 1px;
+    }
+}
