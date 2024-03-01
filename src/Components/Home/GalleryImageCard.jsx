@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../Styles/GalleryImageCard.scss'
+import '../../Styles/Home/GalleryImageCard.scss'
 import img from '../../Assets/Men-Nike.jpg'
 
 const GalleryImageCard = () => {

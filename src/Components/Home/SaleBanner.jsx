@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../Styles/SaleBanner.scss'
+import '../../Styles/Home/SaleBanner.scss'
 
 const SaleBanner = () => {
     return (

@@ -1,8 +1,9 @@
 import React from 'react'
+import '../../Styles/Shop/Shop.scss'
 
 const Shop = () => {
   return (
-    <div>Shop</div>
+    <div className='Shop'>Shop</div>
   )
 }
 

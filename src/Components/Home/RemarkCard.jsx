@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../Styles/RemarkCard.scss'
+import '../../Styles/Home/RemarkCard.scss'
 import { FaQuoteLeft } from "react-icons/fa6";
 
 const RemarkCard = ({desc, img, name}) => {

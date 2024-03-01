@@ -1,8 +1,12 @@
 import React from 'react'
+import '../../Styles/User/User.scss'
+import LoginSignup from './LoginSignup'
 
 const User = () => {
   return (
-    <div>User</div>
+    <div className='User'>
+        <LoginSignup />
+    </div>
   )
 }
 

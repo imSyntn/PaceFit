@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../Styles/HeroSection.scss'
+import '../../Styles/Home/HeroSection.scss'
 import { FaShoppingBag } from "react-icons/fa";
 import { BsPercent } from "react-icons/bs";
 
@@ -37,7 +37,7 @@ const HeroSection = ({images, currentImage}) => {
             <div className="hero-image-details">
                 <div className="featured"><p>FEATURED</p></div>
                 <div className="collections">
-                    <h1>NIKE <span>2023</span><span>COLLECTIONS</span></h1>
+                    <h1>NIKE <span>2024</span><span>COLLECTIONS</span></h1>
                 </div>
                 <div className="btns">
                     <button className='sho-now'>Shop Now</button>

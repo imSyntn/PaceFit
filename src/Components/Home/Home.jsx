@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import '../../Styles/Home.scss'
+import '../../Styles/Home/Home.scss'
 import GalleryImageCard from './GalleryImageCard';
 // import vid from '../Assets/y2mate.com - Shoes by 2GO  Theatrical Ad Film  Commercial_1080p.mp4'
 

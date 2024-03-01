@@ -3,24 +3,26 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './Components/Header'
 import Footer from './Components/Footer'
+import Fallback from './Components/Fallback'
 // const MenComponent = lazy(()=> import('./Components/Men'))\
-import Home from './Components/Home/Home'
-import About from './Components/About/About'
-import Shop from './Components/Shop/Shop'
-import Contact from './Components/Contact/Contact'
-import Cart from './Components/Cart/Cart'
-import User from './Components/User/User'
+const Home = lazy(()=> import('./Components/Home/Home'))
+const About = lazy(()=> import('./Components/About/About'))
+const Shop = lazy(()=> import('./Components/Shop/Shop'))
+const Contact = lazy(()=> import('./Components/Contact/Contact'))
+const Cart = lazy(()=> import('./Components/Cart/Cart'))
+const User = lazy(()=> import('./Components/User/User'))
 
 const App = () => {
   return (
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/shop' element={<Shop />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/user' element={<User />} />
+        <Route path='/' element={<Suspense fallback={<Fallback />}><Home /></Suspense>} />
+        <Route path='/about' element={<Suspense fallback={<Fallback />}><About /></Suspense>} />
+        <Route path='/shop' element={<Suspense fallback={<Fallback />}><Shop /></Suspense>} />
+        <Route path='/contact' element={<Suspense fallback={<Fallback />}><Contact /></Suspense>} />
+        <Route path='/user' element={<Suspense fallback={<Fallback />}><User /></Suspense>} />
+        <Route path='/cart' element={<Suspense fallback={<Fallback />}><Cart /></Suspense>} />
       </Routes>
       <Footer />
     </BrowserRouter>

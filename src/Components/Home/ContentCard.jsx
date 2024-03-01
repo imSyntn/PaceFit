@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import '../../Styles/ContentCard.scss'
+import '../../Styles/Home/ContentCard.scss'
 import VanillaTilt from 'vanilla-tilt';
 
 const ContentCard = ({ sectionImage }) => {

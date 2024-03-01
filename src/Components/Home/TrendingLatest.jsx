@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../Styles/TrendingLatest.scss'
+import '../../Styles/Home/TrendingLatest.scss'
 import ContentSection from './ContentSection';
 import one from '../../Assets/Hero Section/1.png'
 

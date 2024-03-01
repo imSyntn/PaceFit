@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../Styles/AdvantageCard.scss'
+import '../../Styles/Home/AdvantageCard.scss'
 
 const AdvantageCard = ({title, desc, Icon}) => {
   return (

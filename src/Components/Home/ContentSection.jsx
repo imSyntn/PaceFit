@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import '../../Styles/Content.scss'
+import '../../Styles/Home/Content.scss'
 import ContentCard from './ContentCard'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Scrollbar } from 'swiper/modules';
+import { FreeMode } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/scrollbar';
 
@@ -11,6 +12,7 @@ const ContentSection = ({ heading, sectionImage }) => {
     const [items, setItems] = useState(false)
 
     useEffect(() => {
+        // Math.ceil()
         setItems(Math.floor((window.innerWidth - 100)/280))
     }, [])
 
@@ -19,12 +21,14 @@ const ContentSection = ({ heading, sectionImage }) => {
             <h1>{heading}</h1>
             <Swiper
                 className='swipe'
+
+                freeMode={true}
                 spaceBetween={10}
                 slidesPerView={items}
                 scrollbar={{
                     hide: false,
                   }}
-                  modules={[Scrollbar]}
+                  modules={[FreeMode, Scrollbar]}
             >
                 {
                     arr.map((item, index) => (
