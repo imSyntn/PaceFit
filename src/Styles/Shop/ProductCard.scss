@@ -1,0 +1,58 @@
+.ProductCard {
+    width: 328px;
+    overflow: hidden;
+    margin: 20px 10px 20px 10px;
+    border-radius: 5px;
+    position: relative;
+    &:hover {
+        >.addToCart {
+            opacity: 1;
+        }
+    }
+    >.addToCart {
+        cursor: pointer;
+        opacity: 0;
+        position: absolute;
+        border: 1.5px solid rgb(11, 130, 0);
+        top: 5px;
+        right: 5px;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        >svg {
+            font-size: 22px;
+            fill: rgb(11, 130, 0);
+        }
+    }
+    >img {
+        height: 328px;
+        width: 328px;
+        border-radius: 5px;
+        // border: 1px solid rgb(255, 0, 0);
+    }
+    >.desc{
+        padding-inline: 2px;
+        >.brandStar {
+            border-block: 1px solid rgb(193, 193, 193);
+            padding-block: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        >.name {
+            font-weight: 500;
+            padding-top: 5px;
+        }
+        >.price {
+            font-weight: 500;
+            padding-top: 5px;
+            >span {
+                margin-right: 9px;
+                text-decoration: line-through;
+                color: gray;
+            }
+        }
+    }
+}

@@ -20,7 +20,8 @@ const LoginSignup = () => {
             <div className="inp">
                 <TfiLock />
                 <input type={hide ? 'password' : 'text'} name="password" placeholder='Enter your Password' id="" />
-                <div className="eye" onClick={() => setHide((prev) => !prev)}>
+                <div className="eye" onMouseDown={()=> setHide(false)} onMouseUp={()=> setHide(true)}
+                 >
                     {
                         hide ? (<FaRegEye />) : (<FaRegEyeSlash />)
                     }
