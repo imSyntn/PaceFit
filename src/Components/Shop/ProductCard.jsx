@@ -1,12 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../../Styles/Shop/ProductCard.scss'
 import { FaRegStar } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
+import { useDispatch } from 'react-redux'
+import {add} from '../../Redux/slices/CartSlice'
 
-const ProductCard = ({ name, brand, gender, category, price, items_left, imageURL }) => {
+const ProductCard = ({ name, brand, gender, category, price, items_left, imageURL, id }) => {
+
+    const dispatch = useDispatch()
+
     return (
         <div className='ProductCard'>
-            <div className="addToCart">
+            <div className="addToCart" onClick={()=> dispatch(add({
+                id,
+                name,
+                brand,
+                gender,
+                price,
+                imageURL,
+                quantity: 1
+            }))}>
                 <FaCartShopping />
             </div>
             <img src={imageURL} alt="image" />

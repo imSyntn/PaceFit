@@ -235,7 +235,8 @@
                     }
 
                     &:hover {
-                        border: 1px solid #2575fc;
+                        border-color: #2575fc;
+                        color: white;
 
                         &::before {
                             left: 0;

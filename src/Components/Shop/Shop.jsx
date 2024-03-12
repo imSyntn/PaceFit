@@ -4,15 +4,16 @@ import { FaBars } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
 import data from '../../FakeData.json'
 import ProductCard from './ProductCard';
+import CheckboxText from './CheckboxText';
 
 const Shop = () => {
   const[open, setOpen] = useState(false)
 
   const catagories = ['Kids', 'Men', 'Women', 'Sneakers', 'Running', 'Basketball', 'Football', 'Training & Gym']
+  const gender = ['Men', "Women", 'Unisex']
+  const price = ['Under 1000', '1000 - 2000', '2000-3000', 'above 3000']
 
   let arr = Object.values(data)
-  console.log(arr)
-
   
   return (
     <div className='Shop'>
@@ -36,16 +37,27 @@ const Shop = () => {
         <div className={`filterDiv ${ open && 'open'}`}>
           <h2>Catagories</h2>
           {
-            catagories.map(item=> <p>{item}</p>)
+            catagories.map(item=> <p key={item}>{item}</p>)
+          }
+          <h2>Gender</h2>
+          {
+            gender.map((item, index)=> (
+              <CheckboxText key={index} text={item} />
+            ))
           }
           <h2>Price</h2>
-          <input type="range" />
-          <input type="range" />
+          {
+            price.map((item, index)=> (
+              <CheckboxText key={index} text={item} />
+            ))
+          }
+          <h2>Sale</h2>
+          <CheckboxText text={'Sale'} />
         </div>
         <div className="products">
           {
             arr.map(item => (
-              <ProductCard key={item.id} name={item.name} brand={item.brand} gender={item.gender} category={item.category} price={item.price} items_left={item.items_left} imageURL={item.imageURL} />
+              <ProductCard key={item.id} id={item.id} name={item.name} brand={item.brand} gender={item.gender} category={item.category} price={item.price} items_left={item.items_left} imageURL={item.imageURL} />
             ))
           }
         </div>

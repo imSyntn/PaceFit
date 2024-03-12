@@ -6,9 +6,10 @@ import { Scrollbar } from 'swiper/modules';
 import { FreeMode } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/scrollbar';
+import Data from '../../FakeData.json'
 
-const ContentSection = ({ heading, sectionImage }) => {
-    let arr = [1, 2, 3, 1, 2, 2, 3]
+const ContentSection = ({ heading }) => {
+    let arr = Object.values(Data)
     const [items, setItems] = useState(false)
 
     useEffect(() => {
@@ -32,7 +33,7 @@ const ContentSection = ({ heading, sectionImage }) => {
             >
                 {
                     arr.map((item, index) => (
-                        <SwiperSlide key={index}><ContentCard sectionImage={sectionImage} /></SwiperSlide>
+                        <SwiperSlide key={index}><ContentCard img={item.imageURL} /></SwiperSlide>
                     ))
                 }
             </Swiper>

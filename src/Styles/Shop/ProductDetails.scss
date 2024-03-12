@@ -1,0 +1,44 @@
+.ProductDetails {
+    min-height: calc(100vh - 90px);
+    // background: rgb(72, 222, 102);
+    padding-top: 120px;
+    padding-inline: 60px;
+
+    >.imageDesc {
+        display: flex;
+        justify-content: space-evenly;
+        height: calc(100vh - 120px);
+        border: 1px solid orangered;
+        // overflow: hidden;
+
+        >.left {
+            width: 50%;
+            height: 100%;
+            border: 1px solid rgb(0, 200, 255);
+        }
+
+        >.right {
+            width: 50%;
+            height: 100%;
+            overflow-y: auto;
+            border: 1px solid rgb(17, 0, 255);
+        }
+    }
+    >.reviews {
+        padding-top: 50px;
+        >.cont {
+            border: 1px solid red;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 20px;
+            >h1 {
+                font-size: 2.5rem;
+            }
+        }
+        >form {
+            border: 1px solid gray;
+            
+        }
+    }
+}

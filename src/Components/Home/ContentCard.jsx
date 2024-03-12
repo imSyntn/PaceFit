@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import '../../Styles/Home/ContentCard.scss'
 import VanillaTilt from 'vanilla-tilt';
 
-const ContentCard = ({ sectionImage }) => {
+const ContentCard = ({ img }) => {
 
   useEffect(() => {
     VanillaTilt.init(document.querySelectorAll('.ContentCard'), {
@@ -14,7 +14,7 @@ const ContentCard = ({ sectionImage }) => {
 
   return (
     <div className='ContentCard'>
-      <img src={sectionImage} alt="" />
+      <img src={img} alt="" />
       <div className="after">
         <h2>Nike</h2>
         <p className="type">Casuals for men</p>
