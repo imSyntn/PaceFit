@@ -2,12 +2,13 @@ import React from 'react'
 import '../../Styles/Cart/Cart.scss'
 // import img from '../../Assets/Men-Nike.jpg'
 import { useSelector, useDispatch } from 'react-redux'
-import { add, remove } from '../../Redux/slices/CartSlice'
+import AddRemove from './AddRemove'
+// import { add, remove } from '../../Redux/slices/CartSlice'
 
 const Cart = () => {
 
   const cartItems = useSelector(state => state.CartSlice.cartItems)
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
   return (
     <div className='Cart'>
@@ -18,7 +19,7 @@ const Cart = () => {
             <div key={index} className="product">
               <img src={item.imageURL} alt="image" />
               <p>{item.name}</p>
-              <div className="quantity">
+              {/* <div className="quantity">
                 <button onClick={() => dispatch(add({
                   id: item.id,
                   name: item.name,
@@ -40,7 +41,8 @@ const Cart = () => {
                   imageURL: item.imageURL,
                   quantity: 1,
                 }))}>-</button>
-              </div>
+              </div> */}
+              <AddRemove item={item} />
               <p>${item.price * item.quantity}</p>
             </div>
           ))

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import '../Styles/Header.scss'
 import { Link } from 'react-router-dom'
-import { FaSearch, FaShoppingBag, FaRegUser, FaBars, FaUber, FaUser } from "react-icons/fa";
-import { BsXLg } from "react-icons/bs";
+import { FaShoppingBag, FaUser } from "react-icons/fa";
+import { useSelector } from 'react-redux';
 import Logo from '../Assets/PaceFit Logo.png'
 
 const Header = () => {
     const [showAccordian, setShowAccordian] = useState(false)
+    const cartItems = useSelector(state=> state.CartSlice.cartItems)
     // const [showSearchInput, setShowSearchInput] = useState(false)
     // const [changeComponent, setChangeComponent] = useState({
     //     men: true,
@@ -35,7 +36,12 @@ const Header = () => {
                     <Link to='/about'>ABOUT</Link>
                     <Link to='/shop'>SHOP</Link>
                     <Link to='/contact'>CONTACT</Link>
-                    <Link to='/cart'><FaShoppingBag /></Link>
+                    <Link to='/cart'>
+                        <div className="cartIcon">
+                            <FaShoppingBag />
+                            <p>{cartItems.length}</p>
+                        </div>
+                    </Link>
                     <Link to='/user'><FaUser /></Link>
                 </div>
             </header>

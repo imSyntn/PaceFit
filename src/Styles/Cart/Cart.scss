@@ -24,23 +24,6 @@
             >img {
                 width: 50px;
             }
-            >.quantity {
-                display: flex;
-                align-items: center;
-                button {
-                    width: 30px;
-                    height: 30px;
-                    cursor: pointer;
-                }
-                .nums {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: 30px;
-                    height: 30px;
-                    border-block: 1px solid gray;
-                }
-            }
         }
     }
     >.totalPay {

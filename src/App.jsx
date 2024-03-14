@@ -5,13 +5,13 @@ import Header from './Components/Header'
 import Footer from './Components/Footer'
 import Fallback from './Components/Fallback'
 // const MenComponent = lazy(()=> import('./Components/Men'))\
-const Home = lazy(()=> import('./Components/Home/Home'))
-const About = lazy(()=> import('./Components/About/About'))
-const Shop = lazy(()=> import('./Components/Shop/Shop'))
-const Contact = lazy(()=> import('./Components/Contact/Contact'))
-const Cart = lazy(()=> import('./Components/Cart/Cart'))
-const User = lazy(()=> import('./Components/User/User'))
-const ProductDetails = lazy(()=> import('./Components/Shop/ProductDetails'))
+const Home = lazy(() => import('./Components/Home/Home'))
+const About = lazy(() => import('./Components/About/About'))
+const Shop = lazy(() => import('./Components/Shop/Shop'))
+const Contact = lazy(() => import('./Components/Contact/Contact'))
+const Cart = lazy(() => import('./Components/Cart/Cart'))
+const User = lazy(() => import('./Components/User/User'))
+const ProductDetails = lazy(() => import('./Components/Shop/ProductDetails'))
 
 const App = () => {
   return (
@@ -24,7 +24,7 @@ const App = () => {
         <Route path='/contact' element={<Suspense fallback={<Fallback />}><Contact /></Suspense>} />
         <Route path='/user' element={<Suspense fallback={<Fallback />}><User /></Suspense>} />
         <Route path='/cart' element={<Suspense fallback={<Fallback />}><Cart /></Suspense>} />
-        <Route path='/ProductDetails' element={<Suspense fallback={<Fallback />}><ProductDetails /></Suspense>} />
+        <Route path='/ProductDetails/:id' element={<Suspense fallback={<Fallback />}><ProductDetails /></Suspense>} />
       </Routes>
       <Footer />
     </BrowserRouter>

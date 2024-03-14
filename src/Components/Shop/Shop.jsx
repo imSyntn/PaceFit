@@ -5,21 +5,22 @@ import { FaSearch } from "react-icons/fa";
 import data from '../../FakeData.json'
 import ProductCard from './ProductCard';
 import CheckboxText from './CheckboxText';
+import { Link } from 'react-router-dom';
 
 const Shop = () => {
-  const[open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false)
 
   const catagories = ['Kids', 'Men', 'Women', 'Sneakers', 'Running', 'Basketball', 'Football', 'Training & Gym']
   const gender = ['Men', "Women", 'Unisex']
   const price = ['Under 1000', '1000 - 2000', '2000-3000', 'above 3000']
 
   let arr = Object.values(data)
-  
+
   return (
     <div className='Shop'>
       <h1>Shop<span>.</span></h1>
       <div className="searchDiv">
-        <div onClick={()=> setOpen(prev=> !prev)}><FaBars /><span>Filter</span></div>
+        <div onClick={() => setOpen(prev => !prev)}><FaBars /><span>Filter</span></div>
         <div className="inpBtn">
           <input type="text" name="search" placeholder='Search here...' id="" />
           <button><FaSearch /></button>
@@ -34,20 +35,20 @@ const Shop = () => {
         </select>
       </div>
       <div className="shopContainer">
-        <div className={`filterDiv ${ open && 'open'}`}>
+        <div className={`filterDiv ${open && 'open'}`}>
           <h2>Catagories</h2>
           {
-            catagories.map(item=> <p key={item}>{item}</p>)
+            catagories.map(item => <p key={item}>{item}</p>)
           }
           <h2>Gender</h2>
           {
-            gender.map((item, index)=> (
+            gender.map((item, index) => (
               <CheckboxText key={index} text={item} />
             ))
           }
           <h2>Price</h2>
           {
-            price.map((item, index)=> (
+            price.map((item, index) => (
               <CheckboxText key={index} text={item} />
             ))
           }
@@ -57,7 +58,9 @@ const Shop = () => {
         <div className="products">
           {
             arr.map(item => (
-              <ProductCard key={item.id} id={item.id} name={item.name} brand={item.brand} gender={item.gender} category={item.category} price={item.price} items_left={item.items_left} imageURL={item.imageURL} />
+              <Link to={`/ProductDetails/${item.id}`}>
+                <ProductCard key={item.id} id={item.id} name={item.name} brand={item.brand} gender={item.gender} category={item.category} price={item.price} items_left={item.items_left} imageURL={item.imageURL} />
+              </Link>
             ))
           }
         </div>
