@@ -19,29 +19,6 @@ const Cart = () => {
             <div key={index} className="product">
               <img src={item.imageURL} alt="image" />
               <p>{item.name}</p>
-              {/* <div className="quantity">
-                <button onClick={() => dispatch(add({
-                  id: item.id,
-                  name: item.name,
-                  brand: item.brand,
-                  gender: item.gender,
-                  price: item.price,
-                  imageURL: item.imageURL,
-                  quantity: 1,
-                }))}>+</button>
-                <div className="nums">
-                  <p>{item.quantity}</p>
-                </div>
-                <button onClick={() => dispatch(remove({
-                  id: item.id,
-                  name: item.name,
-                  brand: item.brand,
-                  gender: item.gender,
-                  price: item.price,
-                  imageURL: item.imageURL,
-                  quantity: 1,
-                }))}>-</button>
-              </div> */}
               <AddRemove item={item} />
               <p>${item.price * item.quantity}</p>
             </div>
@@ -52,7 +29,7 @@ const Cart = () => {
         <h1>Total: <span>${
           cartItems.reduce((sum, i)=> sum+(i.price*i.quantity),0)
         }</span></h1>
-        <button>Proceed To Payment</button>
+        <button>{cartItems.length==0 ? 'Add items in Cart.' : 'Proceed To Payment'}</button>
       </div>
     </div>
   )

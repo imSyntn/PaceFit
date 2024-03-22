@@ -10,16 +10,16 @@ const LoginSignup = () => {
     const [hide, setHide] = useState(true)
     return (
         <div className='LoginSignup'>
-            <h1>{login ? 'Login' : 'Signin'}</h1>
+            <h1>{login ? 'Login' : 'Signup'}</h1>
             <label htmlFor="email">Email</label>
             <div className="inp">
-                <TfiEmail />
+                <TfiEmail className='mail' />
                 <input type="email" name="email" placeholder='Enter your Email' id="" />
             </div>
             <label htmlFor="password">Password</label>
             <div className="inp">
                 <TfiLock />
-                <input type={hide ? 'password' : 'text'} name="password" placeholder='Enter your Password' id="" />
+                <input type={hide ? 'password' : 'text'} name="password" placeholder={login ? 'Enter your Password' : 'Create new Password'} id="" />
                 <div className="eye" onMouseDown={()=> setHide(false)} onMouseUp={()=> setHide(true)}
                  >
                     {

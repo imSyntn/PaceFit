@@ -75,8 +75,17 @@
             height: 76vh;
             overflow: hidden;
             // border: 1px solid rgb(0, 255, 13);
-            background: rgb(239, 239, 239);
+            // background: rgb(239, 239, 239);
             transition: all 0.3s;
+            h2 {
+                margin-block: 2.5px;
+            }
+            p {
+                font-size: 18px;
+                padding-block: 2.5px;
+                padding-left: 5px;
+                cursor: pointer;
+            }
         }
 
         .open {

@@ -2,19 +2,81 @@ import React, { useEffect, useState } from 'react'
 import '../../Styles/Shop/Shop.scss'
 import { FaBars } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
-import data from '../../FakeData.json'
+import Data from '../../FakeData.json'
 import ProductCard from './ProductCard';
 import CheckboxText from './CheckboxText';
-import { Link } from 'react-router-dom';
 
 const Shop = () => {
   const [open, setOpen] = useState(false)
+  const [data, setData] = useState({
+    raw: Object.values(Data),
+    filterd: []
+  })
+  const [currentFilters, setCurrentFilters]=useState([])
+  const defaultSorting = Object.values(Data)
 
-  const catagories = ['Kids', 'Men', 'Women', 'Sneakers', 'Running', 'Basketball', 'Football', 'Training & Gym']
+  const sorting = (value) => {
+    if (value === 'default') {
+      setData(prev => ({
+        ...prev,
+        raw: defaultSorting
+      }))
+    }
+    if (value === 'popularity') {
+      const sorted = data.raw.sort((a, b) => a.popularity - b.popularity)
+      setData(prev => ({
+        ...prev,
+        raw: sorted
+      }))
+    }
+    if (value === 'rating') {
+      const sorted = data.raw.sort((a, b) => a.rating - b.rating)
+      setData(prev => ({
+        ...prev,
+        raw: sorted
+      }))
+    }
+    if (value === 'date') {
+      const sorted = data.raw.sort((a, b) => new Date(a.dateAdded) - new Date(b.dateAdded))
+      setData(prev => ({
+        ...prev,
+        raw: sorted
+      }))
+    }
+    if (value === 'priceLow') {
+      const sorted = data.raw.sort((a, b) => a.price - b.price)
+      setData(prev => ({
+        ...prev,
+        raw: sorted
+      }))
+    }
+    if (value === 'priceHigh') {
+      const sorted = data.raw.sort((a, b) => b.price - a.price)
+      setData(prev => ({
+        ...prev,
+        raw: sorted
+      }))
+    }
+  }
+
+  const catagoryFilter = (value) => {
+    if(value==='All') {
+      setData(prev => ({
+        ...prev,
+        filterd: []
+      }))
+    }
+    const filteredVal = data.raw.filter(item => item.category.toLowerCase() == value.toLowerCase())
+    setData(prev => ({
+      ...prev,
+      filterd: filteredVal
+    }))
+  }
+
+  const catagories = ['All', 'Casual', 'Sneakers', 'Running', 'Basketball', 'Football', 'Training & Gym']
   const gender = ['Men', "Women", 'Unisex']
   const price = ['Under 1000', '1000 - 2000', '2000-3000', 'above 3000']
 
-  let arr = Object.values(data)
 
   return (
     <div className='Shop'>
@@ -25,7 +87,7 @@ const Shop = () => {
           <input type="text" name="search" placeholder='Search here...' id="" />
           <button><FaSearch /></button>
         </div>
-        <select name="sorting" id="select">
+        <select name="sorting" id="select" onChange={(e) => sorting(e.target.value)}>
           <option value="default" defaultValue={true}>Default sorting</option>
           <option value="popularity">Sort by popularity</option>
           <option value="rating">Sort by average rating</option>
@@ -36,9 +98,12 @@ const Shop = () => {
       </div>
       <div className="shopContainer">
         <div className={`filterDiv ${open && 'open'}`}>
+          <div className="filters">
+
+          </div>
           <h2>Catagories</h2>
           {
-            catagories.map(item => <p key={item}>{item}</p>)
+            catagories.map(item => <p key={item} onClick={() => catagoryFilter(item)}>{item}</p>)
           }
           <h2>Gender</h2>
           {
@@ -57,11 +122,15 @@ const Shop = () => {
         </div>
         <div className="products">
           {
-            arr.map(item => (
-              <Link to={`/ProductDetails/${item.id}`}>
+            data.filterd.length === 0 ? (
+              data.raw.map(item => (
                 <ProductCard key={item.id} id={item.id} name={item.name} brand={item.brand} gender={item.gender} category={item.category} price={item.price} items_left={item.items_left} imageURL={item.imageURL} />
-              </Link>
-            ))
+              ))
+            ) : (
+              data.filterd.map(item => (
+                <ProductCard key={item.id} id={item.id} name={item.name} brand={item.brand} gender={item.gender} category={item.category} price={item.price} items_left={item.items_left} imageURL={item.imageURL} />
+              ))
+            )
           }
         </div>
       </div>

@@ -7,24 +7,53 @@
     >.imageDesc {
         display: flex;
         justify-content: space-evenly;
-        height: calc(100vh - 120px);
-        border: 1px solid orangered;
+        height: 394px;
+        // border: 1px solid orangered;
         // overflow: hidden;
-
-        >.left {
-            width: 50%;
-            height: 100%;
-            border: 1px solid rgb(0, 200, 255);
+        >.imgSection {
+            display: flex;
+            >.imgsDiv {
+                margin-right: 10px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                // border: 1px solid rgb(81, 255, 0);
+                >img {
+                    width: 70px;
+                }
+            }
+            >img {
+                // width: 40%;
+                // height: 90%;
+                // border: 1px solid rgb(0, 200, 255);
+            }
         }
 
         >.right {
-            width: 50%;
+            width: 40%;
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             overflow-y: auto;
-            border: 1px solid rgb(17, 0, 255);
+            // border: 1px solid rgb(17, 0, 255);
+            >p {
+                >span {
+                    color: green;
+                }
+            }
+            >.cartDiv {
+                position: relative;
+                // border: 1px solid red;
+                height: 45px;
+                display: flex;
+                align-items: center;
+                >.addToCart {
+                    opacity: 1;
+                    top: 0;
+                    left: 0;
+                }
+            }
         }
     }
     >.reviews {

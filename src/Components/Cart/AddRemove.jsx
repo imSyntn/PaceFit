@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../../Styles/Cart/AddRemove.scss'
 import { useSelector, useDispatch } from 'react-redux'
 import { add, remove } from '../../Redux/slices/CartSlice'
 
 const AddRemove = ({ item }) => {
-    const cartItems = useSelector(state => state.CartSlice.cartItems)
+    // const cartItems = useSelector(state => state.CartSlice.cartItems)
     const dispatch = useDispatch()
+    // useEffect(()=>{
+    //     let number = 
+    //     console.log('num',number)
+    // },[])
     return (
         <div className="quantity">
             <button onClick={() => dispatch(add({

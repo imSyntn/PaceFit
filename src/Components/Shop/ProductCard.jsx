@@ -1,27 +1,30 @@
 import React, { useEffect } from 'react'
 import '../../Styles/Shop/ProductCard.scss'
 import { FaRegStar } from "react-icons/fa";
-import { FaCartShopping } from "react-icons/fa6";
-import { useDispatch } from 'react-redux'
-import {add} from '../../Redux/slices/CartSlice'
+// import { add } from '../../Redux/slices/CartSlice'
+import AddToCart from './AddToCart';
+import { Link } from 'react-router-dom';
 
 const ProductCard = ({ name, brand, gender, category, price, items_left, imageURL, id }) => {
 
-    const dispatch = useDispatch()
 
     return (
-        <div className='ProductCard'>
-            <div className="addToCart" onClick={()=> dispatch(add({
-                id,
-                name,
-                brand,
-                gender,
-                price,
-                imageURL,
-                quantity: 1
-            }))}>
+        <Link to={`/ProductDetails/${id}`} className='ProductCard'>
+            {/* <div className="addToCart" onClick={(e) => {
+                e.preventDefault()
+                dispatch(add({
+                    id,
+                    name,
+                    brand,
+                    gender,
+                    price,
+                    imageURL,
+                    quantity: 1
+                }))
+            }}>
                 <FaCartShopping />
-            </div>
+            </div> */}
+            <AddToCart id={id} name={name} brand={brand} gender={gender} price={price} imageURL={imageURL} quantity={1} />
             <img src={imageURL} alt="image" />
             <div className="desc">
                 <div className="brandStar">
@@ -35,9 +38,9 @@ const ProductCard = ({ name, brand, gender, category, price, items_left, imageUR
                     </div>
                 </div>
                 <p className='name'>{name}</p>
-                <p className='price'><span>${price+100}</span>${price}</p>
+                <p className='price'><span>${price + 100}</span>${price}</p>
             </div>
-        </div>
+        </Link>
     )
 }
 
