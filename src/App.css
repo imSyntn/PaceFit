@@ -23,6 +23,11 @@
 /* body {
     overflow-x: hidden;
 } */
+
+.starSVG {
+  cursor: pointer;
+  transition: none;
+}
 ::-webkit-scrollbar {
   display: none;
 }

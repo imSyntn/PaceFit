@@ -29,7 +29,7 @@ const Cart = () => {
         <h1>Total: <span>${
           cartItems.reduce((sum, i)=> sum+(i.price*i.quantity),0)
         }</span></h1>
-        <button>{cartItems.length==0 ? 'Add items in Cart.' : 'Proceed To Payment'}</button>
+        <button style={cartItems.length==0 ? {opacity: 0.5} : {opacity:1}}>{cartItems.length==0 ? 'Add items in Cart.' : 'Proceed To Payment'}</button>
       </div>
     </div>
   )

@@ -19,8 +19,11 @@
     >button {
         width: 200px;
         height: 50px;
-        color: black;
-        font-size: 1.1rem;
+        background: rgb(255, 103, 47);
+        border: none;
+        color: white;
+        font-size: 17px;
+        cursor: pointer;
 
         &::after {
             content: " >";

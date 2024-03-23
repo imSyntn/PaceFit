@@ -55,7 +55,7 @@ const Header = () => {
                 cart: false,
                 user: false
             })
-        } else if (path == 'shop') {
+        } else if (path == 'shop' || path == 'ProductDetails') {
             setActive({
                 home: false,
                 about: false,
@@ -82,7 +82,7 @@ const Header = () => {
                 cart: true,
                 user: false
             })
-        } else {
+        } else if (path == 'user') {
             setActive({
                 home: false,
                 about: false,

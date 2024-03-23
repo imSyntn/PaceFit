@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useReducer } from 'react'
 import '../../Styles/Shop/ProductDetails.scss'
-import AddRemove from '../Cart/AddRemove';
-import { FaRegStar } from "react-icons/fa";
+// import AddRemove from '../Cart/AddRemove';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import data from '../../FakeData.json'
 import AddToCart from './AddToCart';
+import StarsCantChanged from './StarsCantChanged'
+import StarsCanChange from './StarsCanChange';
 
 const ProductDetails = () => {
     const cartItems = useSelector(state => state.CartSlice.cartItems)
@@ -29,8 +30,8 @@ const ProductDetails = () => {
     }
 
     // useEffect(() => {
-    //     console.log(availableInCart)
-    // }, [availableInCart])
+    //     console.log(product.rating)
+    // }, [product])
 
     return (
         <div className='ProductDetails'>
@@ -65,21 +66,20 @@ const ProductDetails = () => {
                     <p>Catagory <span>{product.category}</span></p>
                 </div>
             </div>
-            <div className="reviews">
+            <div className="reviewsDiv">
                 <div className="cont">
                     <h1>Reviews</h1>
                     <div className="stars">
-                        {
-                            new Array(5).fill(" ").map((item, index) => (
-                                <FaRegStar key={index} />
-                            ))
-                        }
+                        <StarsCantChanged rating = {product.rating} />
                     </div>
                 </div>
                 <p>No reviews, submit one</p>
                 <form action="">
-                    <label htmlFor="text">Write</label>
-                    <input type="text" name="text" id="" />
+                    <p>Write a Review <span>*</span>:</p>
+                    <textarea type="text" name="text" id="" />
+                    <p>Rating <span>*</span>:</p>
+                    <StarsCanChange />
+                    <button>Submit</button>
                 </form>
             </div>
         </div>

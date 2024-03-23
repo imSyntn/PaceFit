@@ -1,5 +1,60 @@
 .Contact {
-    height: calc(100vh - 90px);
-    background: rgb(72, 222, 222);
+    height: calc(100vh - 110px);
+    position: relative;
+    // background: rgb(72, 222, 222);
     padding-top: 60px;
+    padding-inline: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    // video {
+    //     position: absolute;
+    //     left: 0;
+    //     bottom: 0;
+    //     height: calc(100% - 60px);
+    //     width: 100vw;
+    //     object-fit: fill;
+    //     z-index: 1;
+    // }
+    h1 {
+        font-weight: 400;
+    }
+
+    form {
+        border: 1px solid red;
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        padding: 40px;
+
+        p {
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+
+        input,
+        textarea {
+            height: 40px;
+            margin-bottom: 20px;
+            padding-inline: 10px;
+            font-size: 17px;
+        }
+
+        textarea {
+            padding-block: 10px;
+            height: 80px;
+            resize: none;
+        }
+
+        button {
+            height: 40px;
+            background: rgb(255, 103, 47);
+            border: none;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+        }
+    }
 }

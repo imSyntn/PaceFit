@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../../Styles/Shop/Shop.scss'
 import { FaBars } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
-import Data from '../../FakeData.json'
+import Data from '../../FakeData.json';
 import ProductCard from './ProductCard';
 import CheckboxText from './CheckboxText';
 
@@ -124,11 +124,11 @@ const Shop = () => {
           {
             data.filterd.length === 0 ? (
               data.raw.map(item => (
-                <ProductCard key={item.id} id={item.id} name={item.name} brand={item.brand} gender={item.gender} category={item.category} price={item.price} items_left={item.items_left} imageURL={item.imageURL} />
+                <ProductCard key={item.id} id={item.id} name={item.name} brand={item.brand} gender={item.gender} category={item.category} price={item.price} items_left={item.items_left} imageURL={item.imageURL} rating={item.rating} />
               ))
             ) : (
               data.filterd.map(item => (
-                <ProductCard key={item.id} id={item.id} name={item.name} brand={item.brand} gender={item.gender} category={item.category} price={item.price} items_left={item.items_left} imageURL={item.imageURL} />
+                <ProductCard key={item.id} id={item.id} name={item.name} brand={item.brand} gender={item.gender} category={item.category} price={item.price} items_left={item.items_left} imageURL={item.imageURL} rating={item.rating} />
               ))
             )
           }
