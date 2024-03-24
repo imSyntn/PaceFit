@@ -1,25 +1,45 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import '../../Styles/Shop/AddToCart.scss'
-import { FaCartShopping } from "react-icons/fa6";
+import { FaCartShopping, FaCheck } from "react-icons/fa6";
 import { add } from '../../Redux/slices/CartSlice'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 const AddToCart = ({id, name, brand, gender, price, imageURL, quantity=1 }) => {
+
+    const cartItems = useSelector(state => state.CartSlice.cartItems)
+
+    // console.log(cartItems)
+    const[added, setAdded] = useState(false)
     const dispatch = useDispatch()
+
+    useEffect(()=>{
+        const isAvailable = cartItems.find(item=> item.id == id)
+        if(isAvailable) setAdded(true)
+    },[])
+
     return (
         <div className="addToCart" onClick={(e) => {
             e.preventDefault()
-            dispatch(add({
-                id,
-                name,
-                brand,
-                gender,
-                price,
-                imageURL,
-                quantity
-            }))
+            if(!added) {
+                dispatch(add({
+                    id,
+                    name,
+                    brand,
+                    gender,
+                    price,
+                    imageURL,
+                    quantity
+                }))
+                setAdded(true)
+            }
         }}>
-            <FaCartShopping />
+            {
+                added ? (
+                    <FaCheck />
+                ) : (
+                    <FaCartShopping />
+                )
+            }
         </div>
     )
 }

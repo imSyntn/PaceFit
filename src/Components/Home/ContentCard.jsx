@@ -1,16 +1,7 @@
 import React, { useEffect } from 'react'
 import '../../Styles/Home/ContentCard.scss'
-import VanillaTilt from 'vanilla-tilt';
 
 const ContentCard = ({ img }) => {
-
-  useEffect(() => {
-    VanillaTilt.init(document.querySelectorAll('.ContentCard'), {
-      max: 15,
-      speed: 300,
-      glare: false
-    })
-  }, [])
 
   return (
     <div className='ContentCard'>

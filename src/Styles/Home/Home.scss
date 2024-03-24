@@ -1,8 +1,17 @@
 .gallery-section {
-    padding: 50px 50px 0 50px;
+    // padding: 50px 50px 0 50px;
+    padding-left: 50px;
+    // div {
     display: flex;
-    justify-content: space-between;
+    // align-items: ;
+    justify-content: space-evenly;
     flex-wrap: wrap;
+    // }
+}
+
+.aft {
+    margin-block: 30px;
+    margin-left: 50px;
 }
 
 .remarks {

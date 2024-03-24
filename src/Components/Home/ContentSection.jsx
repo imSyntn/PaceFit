@@ -1,26 +1,30 @@
 import React, { useEffect, useState } from 'react'
-import '../../Styles/Home/Content.scss'
+import '../../Styles/Home/ContentSection.scss'
 import ContentCard from './ContentCard'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Scrollbar } from 'swiper/modules';
-import { FreeMode } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/scrollbar';
+import { FaAngleLeft } from "react-icons/fa6";
+import { FaAngleRight } from "react-icons/fa6";
 import Data from '../../FakeData.json'
 
-const ContentSection = ({ heading }) => {
+const ContentSection = ({ heading, id }) => {
     let arr = Object.values(Data)
     const [items, setItems] = useState(false)
 
     useEffect(() => {
         // Math.ceil()
-        setItems(Math.floor((window.innerWidth - 100)/280))
+        setItems(Math.floor((window.innerWidth - 100) / 280))
     }, [])
+
+    const slideLeft = () => {
+        document.querySelector(`.swipe${id}`).scrollLeft += 260;
+    }
+    const slideRight = () => {
+        document.querySelector(`.swipe${id}`).scrollLeft -= 260;
+    }
 
     return (
         <div className='Content'>
             <h1>{heading}</h1>
-            <Swiper
+            {/* <Swiper
                 className='swipe'
 
                 freeMode={true}
@@ -30,13 +34,21 @@ const ContentSection = ({ heading }) => {
                     hide: false,
                   }}
                   modules={[FreeMode, Scrollbar]}
-            >
-                {
-                    arr.map((item, index) => (
-                        <SwiperSlide key={index}><ContentCard img={item.imageURL} /></SwiperSlide>
-                    ))
-                }
-            </Swiper>
+            > */}
+            <div className='over'>
+                <button className='left' onClick={slideRight}><FaAngleLeft /></button>
+                <button className='right' onClick={slideLeft}><FaAngleRight /></button>
+                <div className={`swipe${id} swipeCont`}>
+                    {
+                        arr.map((item, index) => (
+                            // <SwiperSlide key={index}>
+                            <ContentCard key={index} img={item.imageURL} />
+                            // {/* </SwiperSlide> */}
+                        ))
+                    }
+                </div>
+            </div>
+            {/* </Swiper> */}
         </div>
     )
 }

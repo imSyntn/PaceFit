@@ -3,12 +3,12 @@
     min-width: 260px;
     max-width: 260px;
     height: 300px;
-    background-color: rgba(80, 80, 80, 0.153);
+    // background-color: rgba(80, 80, 80, 0.153);
     border: none;
     border-radius: 10px;
     margin-inline: 10px;
-    transform-style: preserve-3d;
-    transform: perspective(1000px);
+    // transform-style: preserve-3d;
+    // transform: perspective(1000px);
     position: relative;
     overflow: hidden;
 
@@ -20,19 +20,15 @@
     >.after {
         height: 100px;
         width: 100%;
-        background: linear-gradient(to bottom, #D5DEE7 0%, #E8EBF2 50%, #E2E7ED 100%), linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 50%, rgba(255, 255, 255, 0.02) 61%, rgba(0, 0, 0, 0.02) 73%), linear-gradient(33deg, rgba(255, 255, 255, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%);
-        // background: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
-        // background-blend-mode: normal, color-burn;
+        background: rgb(244, 244, 244);
         padding-inline: 10px;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         position: absolute;
-        bottom: -100px;
+        bottom: 0;
         left: 0;
         border-radius: 10px;
-        opacity: 0;
-        transition: all 0.3s;
 
         >h2 {
             color: black;
@@ -87,21 +83,22 @@
     }
 
     >img {
-        width: 220px;
-        margin-inline: 20px;
-        margin-top: 10px;
+        width: 260px;
+        height: 220px;
+        // margin-inline: 20px;
+        // margin-top: 10px;
         transform: translateZ(50px);
         transition: transform 0.3s;
     }
 
     &:hover {
-        .after {
-            opacity: 1;
-            bottom: 0;
-        }
+        // .after {
+        //     opacity: 1;
+        //     bottom: 0;
+        // }
 
         >img {
-            transform: scale(1.08);
+            transform: scale(1.1);
         }
     }
 }

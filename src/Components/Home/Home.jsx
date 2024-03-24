@@ -26,7 +26,7 @@ const Home = () => {
 
     const images = [one, two, three, four, five]
 
-    const [currentImage, setCurrentImage] = useState(0);
+    // const [currentImage, setCurrentImage] = useState(0);
     let xIndex = 10;
     // setTimeout(()=>{
     //     let nextImg = currentImage+1;
@@ -37,28 +37,40 @@ const Home = () => {
     //     )
     // },1000)
     const userRemarks = [
-        {name: 'JENNIFER LEWIS', desc: 'Fast shipping and excellent customer service. The product was even better than expected. I will definitely be a returning customer.', img: casualImg},
-        {name: 'JENNIFER LEWIS', desc: 'Fast shipping and excellent customer service. The product was even better than expected. I will definitely be a returning customer.', img: casualImg},
-        {name: 'JENNIFER LEWIS', desc: 'Fast shipping and excellent customer service. The product was even better than expected. I will definitely be a returning customer.', img: casualImg},
+        { name: 'JENNIFER LEWIS', desc: 'Fast shipping and excellent customer service. The product was even better than expected. I will definitely be a returning customer.', img: casualImg },
+        { name: 'JENNIFER LEWIS', desc: 'Fast shipping and excellent customer service. The product was even better than expected. I will definitely be a returning customer.', img: casualImg },
+        { name: 'JENNIFER LEWIS', desc: 'Fast shipping and excellent customer service. The product was even better than expected. I will definitely be a returning customer.', img: casualImg },
     ]
     const advantages = [
         { title: 'SECURE PAYMENT', desc: 'All our payments our SSL secured', icon: FaLock },
         { title: 'DELIVERED WITH CARE', desc: 'Super fast shipping to your door', icon: FaBox },
         { title: 'EXCELLENT SERVICE', desc: 'Live chat and phone support', icon: FaHandHoldingHeart }
     ]
+    const galleryCardText = [
+        { type: 'Sports shoes', gender: 'MEN' },
+        { type: 'Sports shoes', gender: 'WOMEN' },
+        { type: 'Sneakers', gender: 'MEN' },
+        { type: 'Sneakers', gender: 'WOMEN' },
+    ]
+
     return (
         <>
-            <HeroSection images={images} currentImage={currentImage} />
+            <HeroSection images={images} />
             <TrendingLatest />
+                <h1 className='aft'>COLLECTIONS</h1>
             <div className="gallery-section">
-                <GalleryImageCard />
-                <GalleryImageCard />
-                <GalleryImageCard />
-                <GalleryImageCard />
+                {/* <div> */}
+                    {
+                        galleryCardText.map((item, index) => (
+                            <GalleryImageCard key={index} item={item} />
+                        ))
+                    }
+                {/* </div> */}
             </div>
+                <h1 className='aft'>REMARKS</h1>
             <div className="remarks">
                 {
-                    userRemarks.map((item,index)=>(
+                    userRemarks.map((item, index) => (
                         <RemarkCard key={index} desc={item.desc} img={item.img} name={item.name} />
                     ))
                 }

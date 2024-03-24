@@ -5,8 +5,8 @@ import ContentSection from './ContentSection';
 const TrendingLatest = () => {
     return (
         <div className="Trending-Latest">
-            <ContentSection heading={"TRENDING"} />
-            <ContentSection heading={"LATEST"} />
+            <ContentSection heading={"TRENDING"} id={1} />
+            <ContentSection heading={"LATEST"} id={2} />
         </div>
     )
 }

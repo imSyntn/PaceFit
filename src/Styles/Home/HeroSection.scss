@@ -206,9 +206,13 @@
                     // background: #00afff;
                     background-image: linear-gradient(to right, #f9d423 0%, #ff4e50 100%);
                     border: none;
-                    font-weight: 900;
+                    font-weight: 700;
                     letter-spacing: 1px;
+                    transition: all 0.2s;
                     // text-shadow: 0px 0px 2px black;
+                    &:hover {
+                        color: rgb(255, 255, 255);
+                    }
                 }
 
                 &:nth-child(2) {
@@ -233,10 +237,16 @@
                         transition: left 0.3s;
                         z-index: -1;
                     }
+                    svg {
+                        transition: none;
+                    }
 
                     &:hover {
                         border-color: #2575fc;
                         color: white;
+                        svg {
+                            fill: white;
+                        }
 
                         &::before {
                             left: 0;
@@ -253,17 +263,5 @@
 
     >button {
         background: none;
-    }
-    .next {
-        position: absolute;
-        top: 50%;
-        left: 5%;
-        transform: translateY(-50%);
-    }
-    .prev {
-        position: absolute;
-        top: 50%;
-        left: 95%;
-        transform: translateY(-50%);
     }
 }

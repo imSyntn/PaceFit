@@ -3,7 +3,7 @@ import '../../Styles/Home/HeroSection.scss'
 import { FaShoppingBag } from "react-icons/fa";
 import { BsPercent } from "react-icons/bs";
 
-const HeroSection = ({images, currentImage}) => {
+const HeroSection = ({ images, currentImage }) => {
     return (
         <div className="Hero-section">
             <div className="stoked-text">
@@ -11,7 +11,7 @@ const HeroSection = ({images, currentImage}) => {
                 <h1>NIKE</h1>
             </div>
             <div className="hero-image-section">
-                <img src={images[currentImage]} alt="Product Image" className="hero-image-1" />
+                <img src={images[0]} alt="Product Image" className="hero-image-1" />
                 {/* <div className="scroller">
                         {
                             images.map((item) => (
@@ -44,8 +44,6 @@ const HeroSection = ({images, currentImage}) => {
                     <button className="add-to-bag">Add to Bag <FaShoppingBag /></button>
                 </div>
             </div>
-            <button className='next'>next</button>
-            <button className='prev'>prev</button>
         </div>
     )
 }

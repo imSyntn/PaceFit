@@ -9,7 +9,7 @@ function Footer() {
                 <img src={img} alt="logo" />
                 <h1>PaceFit</h1>
             </div>
-            <p>Copyright © 2023 Planet Earth Store</p>
+            <p>Copyright © 2024 Planet Earth Store</p>
         </footer>
     )
 }

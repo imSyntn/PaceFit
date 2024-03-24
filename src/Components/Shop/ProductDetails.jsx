@@ -2,32 +2,32 @@ import React, { useState, useEffect, useReducer } from 'react'
 import '../../Styles/Shop/ProductDetails.scss'
 // import AddRemove from '../Cart/AddRemove';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 import data from '../../FakeData.json'
 import AddToCart from './AddToCart';
 // import StarsCantChanged from './StarsCantChanged'
 import Stars from './Stars';
 
 const ProductDetails = () => {
-    const cartItems = useSelector(state => state.CartSlice.cartItems)
+    // const cartItems = useSelector(state => state.CartSlice.cartItems)
     const [product, setProduct] = useState(false)
-    const [availableInCart, setAvailableInCart] = useState(false)
+    // const [availableInCart, setAvailableInCart] = useState(false)
     // const [, forceUpdate] = useReducer(x=>x+1,0)
     const { id } = useParams()
-    let arr = Object.values(data)
+    const arr = Object.values(data)
 
     useEffect(() => {
         let prod = arr.find(item => item.id === Number(id))
         // console.log('prod', prod.rating)
         setProduct(prod)
-        available()
+        // available()
     }, [])
 
-    const available = () => {
-        const isAvailable = cartItems.find(item => item.id === Number(id))
-        isAvailable && setAvailableInCart(isAvailable)
-        // console.log('av',isAvailable)
-    }
+    // const available = () => {
+    //     const isAvailable = cartItems.find(item => item.id === Number(id))
+    //     isAvailable && setAvailableInCart(isAvailable)
+    //     // console.log('av',isAvailable)
+    // }
 
     // useEffect(() => {
     //     console.log(product.rating)
@@ -55,12 +55,7 @@ const ProductDetails = () => {
                     {/* <AddRemove item={product} /> */}
                     <div className="cartDiv" >
                         {
-                            (availableInCart) ? (
-                                <p>Added to Cart.</p>
-                            ) : (
-                                <AddToCart id={product.id} name={product.name} brand={product.brand} gender={product.gender} price={product.price} imageURL={product.imageURL} quantity={1} 
-                                onClick={setTimeout(available,100)} />
-                            )
+                            <AddToCart id={product.id} name={product.name} brand={product.brand} gender={product.gender} price={product.price} imageURL={product.imageURL} quantity={1} />
                         }
                     </div>
                     <p>Catagory <span>{product.category}</span></p>
@@ -70,7 +65,7 @@ const ProductDetails = () => {
                 <div className="cont">
                     <h1>Reviews</h1>
                     <div className="stars">
-                        <Stars rating = {product.rating} />
+                        <Stars rating={product.rating} />
                     </div>
                 </div>
                 <p>No reviews, submit one</p>
