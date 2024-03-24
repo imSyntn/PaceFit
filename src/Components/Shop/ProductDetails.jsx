@@ -5,8 +5,8 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import data from '../../FakeData.json'
 import AddToCart from './AddToCart';
-import StarsCantChanged from './StarsCantChanged'
-import StarsCanChange from './StarsCanChange';
+// import StarsCantChanged from './StarsCantChanged'
+import Stars from './Stars';
 
 const ProductDetails = () => {
     const cartItems = useSelector(state => state.CartSlice.cartItems)
@@ -18,7 +18,7 @@ const ProductDetails = () => {
 
     useEffect(() => {
         let prod = arr.find(item => item.id === Number(id))
-        // console.log('prod', prod)
+        // console.log('prod', prod.rating)
         setProduct(prod)
         available()
     }, [])
@@ -46,7 +46,7 @@ const ProductDetails = () => {
                     </div>
                     <img src={product.imageURL} alt="" />
                 </div>
-                <div className="right" data-lenis-prevent>
+                <div className="right">
                     <p>{product.gender}</p>
                     <h1>{product.brand}</h1>
                     <h2>{product.name}</h2>
@@ -70,7 +70,7 @@ const ProductDetails = () => {
                 <div className="cont">
                     <h1>Reviews</h1>
                     <div className="stars">
-                        <StarsCantChanged rating = {product.rating} />
+                        <Stars rating = {product.rating} />
                     </div>
                 </div>
                 <p>No reviews, submit one</p>
@@ -78,7 +78,7 @@ const ProductDetails = () => {
                     <p>Write a Review <span>*</span>:</p>
                     <textarea type="text" name="text" id="" />
                     <p>Rating <span>*</span>:</p>
-                    <StarsCanChange />
+                    <Stars />
                     <button>Submit</button>
                 </form>
             </div>

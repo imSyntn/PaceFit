@@ -3,7 +3,8 @@ import '../../Styles/Shop/ProductCard.scss'
 // import { add } from '../../Redux/slices/CartSlice'
 import AddToCart from './AddToCart';
 import { Link } from 'react-router-dom';
-import StarsCantChanged from './StarsCantChanged'
+// import StarsCanChange from './StarsCanChange'
+import Stars from './Stars';
 
 const ProductCard = ({ name, brand, gender, category, price, items_left, imageURL, id, rating }) => {
 
@@ -29,7 +30,7 @@ const ProductCard = ({ name, brand, gender, category, price, items_left, imageUR
             <div className="desc">
                 <div className="brandStar">
                     <h3>{brand}</h3>
-                    <StarsCantChanged rating={rating} />
+                    <Stars rating={rating} />
                 </div>
                 <p className='name'>{name}</p>
                 <p className='price'><span>${price + 100}</span>${price}</p>
