@@ -14,12 +14,12 @@ const LoginSignup = () => {
             <label htmlFor="email">Email</label>
             <div className="inp">
                 <TfiEmail className='mail' />
-                <input type="email" name="email" placeholder='Enter your Email' id="" />
+                <input type="email" name="email" placeholder='Enter your Email' />
             </div>
             <label htmlFor="password">Password</label>
             <div className="inp">
                 <TfiLock />
-                <input type={hide ? 'password' : 'text'} name="password" placeholder={login ? 'Enter your Password' : 'Create new Password'} id="" />
+                <input type={hide ? 'password' : 'text'} name="password" placeholder={login ? 'Enter your Password' : 'Create new Password'} />
                 <div className="eye" onMouseDown={()=> setHide(false)} onMouseUp={()=> setHide(true)}
                  >
                     {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../Styles/Header.scss'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { FaShoppingBag, FaUser } from "react-icons/fa";
 import { useSelector } from 'react-redux';
 import Logo from '../Assets/PaceFit Logo.png'
@@ -16,12 +16,15 @@ const Header = () => {
         cart: false,
         user: false
     })
+
+    const location = useLocation()
     // const [showSearchInput, setShowSearchInput] = useState(false)
     // const [changeComponent, setChangeComponent] = useState({
     //     men: true,
     //     women: false,
     //     kids: false,
     // })
+    // console.log(location)
 
     useEffect(() => {
         const handleResize = () => {
@@ -36,7 +39,7 @@ const Header = () => {
     }, [])
 
     useEffect(() => {
-        const path = window.location.pathname.split('/')[1]
+        let path = location.pathname.split('/')[1]
         if (path == '') {
             setActive({
                 home: true,
@@ -92,7 +95,7 @@ const Header = () => {
                 user: true
             })
         }
-    }, [])
+    },[location])
 
     return (
         <>
