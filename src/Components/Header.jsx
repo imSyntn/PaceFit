@@ -40,6 +40,7 @@ const Header = () => {
 
     useEffect(() => {
         let path = location.pathname.split('/')[1]
+        // console.log(path)
         if (path == '') {
             setActive({
                 home: true,

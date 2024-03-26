@@ -12,6 +12,7 @@ const Contact = lazy(() => import('./Components/Contact/Contact'))
 const Cart = lazy(() => import('./Components/Cart/Cart'))
 const User = lazy(() => import('./Components/User/User'))
 const ProductDetails = lazy(() => import('./Components/Shop/ProductDetails'))
+const NotAvailable = lazy(()=> import('./Components/NotAvailable'))
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
         <Route path='/user' element={<Suspense fallback={<Fallback />}><User /></Suspense>} />
         <Route path='/cart' element={<Suspense fallback={<Fallback />}><Cart /></Suspense>} />
         <Route path='/ProductDetails/:id' element={<Suspense fallback={<Fallback />}><ProductDetails /></Suspense>} />
+        <Route path='*' element={<Suspense fallback={<Fallback />}><NotAvailable /></Suspense>} />
       </Routes>
       <Footer />
     </BrowserRouter>
