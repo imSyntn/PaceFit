@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import '../../Styles/Cart/AddRemove.scss'
 import { useSelector, useDispatch } from 'react-redux'
 import { add, remove } from '../../Redux/slices/CartSlice'
+import { FaPlus, FaMinus } from "react-icons/fa6";
 
 const AddRemove = ({ item }) => {
     // const cartItems = useSelector(state => state.CartSlice.cartItems)
@@ -20,7 +21,7 @@ const AddRemove = ({ item }) => {
                 price: item.price,
                 imageURL: item.imageURL,
                 quantity: 1,
-            }))}>+</button>
+            }))}><FaPlus /></button>
             <div className="nums">
                 <p>{item.quantity}</p>
             </div>
@@ -32,7 +33,7 @@ const AddRemove = ({ item }) => {
                 price: item.price,
                 imageURL: item.imageURL,
                 quantity: 1,
-            }))}>-</button>
+            }))}><FaMinus /></button>
         </div>
     )
 }

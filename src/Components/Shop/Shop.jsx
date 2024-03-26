@@ -4,7 +4,7 @@ import { FaBars } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
 import Data from '../../FakeData.json';
 import ProductCard from './ProductCard';
-import CheckboxText from './CheckboxText';
+// import CheckboxText from './CheckboxText';
 
 const Shop = () => {
   const [open, setOpen] = useState(false)
@@ -12,7 +12,20 @@ const Shop = () => {
     raw: Object.values(Data),
     filterd: []
   })
-  const [currentFilters, setCurrentFilters]=useState([])
+
+  useEffect(() => {
+    console.log(data)
+  }, [data])
+
+  const [currentFilters, setCurrentFilters] = useState({
+    categories: '',
+    gender: '',
+    price: {
+      start: false,
+      end: false
+    }
+  })
+
   const defaultSorting = Object.values(Data)
 
   const sorting = (value) => {
@@ -59,23 +72,32 @@ const Shop = () => {
     }
   }
 
-  const catagoryFilter = (value) => {
-    if(value==='All') {
-      setData(prev => ({
-        ...prev,
-        filterd: []
-      }))
-    }
-    const filteredVal = data.raw.filter(item => item.category.toLowerCase() == value.toLowerCase())
-    setData(prev => ({
-      ...prev,
-      filterd: filteredVal
-    }))
+  const filterReq = (categories, gender, price) => {
+    return defaultSorting.filter(item => {
+      const categoryFilter = (categories !== '') ? item.category == categories.toUpperCase() : true;
+      const genderFilter = (gender !== '') ? item.gender == gender.toUpperCase() : true;
+      const priceFilter = (price.start !== false) ? price.start <= item.price && item.price <= price.end : true;
+      return categoryFilter && genderFilter && priceFilter
+    })
   }
 
-  const catagories = ['All', 'Casual', 'Sneakers', 'Running', 'Basketball', 'Football', 'Training & Gym']
-  const gender = ['Men', "Women", 'Unisex']
-  const price = ['Under 1000', '1000 - 2000', '2000-3000', 'above 3000']
+  useEffect(() => {
+    console.log('eff')
+    if (currentFilters.categories != '' || currentFilters.gender != '' || currentFilters.price.start != false || currentFilters.price.start != false) {
+      let filteredVal = filterReq(currentFilters.categories, currentFilters.gender, currentFilters.price)
+      console.log('filteredVal', filteredVal)
+      if (filteredVal.length === 0) {
+        filteredVal = [{noData: true}]
+        setData(prev => ({ ...prev, filterd: filteredVal }))
+      } else {
+        setData(prev => ({ ...prev, filterd: filteredVal }))
+      }
+    }
+  }, [currentFilters.categories, currentFilters.gender, currentFilters.price])
+
+  const catagories = ['Casual', 'Sneakers', 'Running', 'Basketball', 'Football', 'Training & Gym']
+  const gender = ['Men', "Women", 'Kids', 'Unisex']
+  const price = [{ start: 0, end: 100 }, { start: 100, end: 200 }, { start: 200, end: 3000 }]
 
 
   return (
@@ -98,37 +120,52 @@ const Shop = () => {
       </div>
       <div className="shopContainer">
         <div className={`filterDiv ${open && 'open'}`}>
-          <div className="filters">
-
+          <div className="clearFilters">
+            {
+              (currentFilters.categories !== '' || currentFilters.gender !== '' || currentFilters.price.start !==false) && <button onClick={() => {
+                setData(prev => ({ ...prev, filterd: [] }))
+                setCurrentFilters({
+                  categories: '',
+                  gender: '',
+                  price: {
+                    start: false,
+                    end: false
+                  }
+                })
+              }}>Clear</button>
+            }
           </div>
           <h2>Catagories</h2>
           {
-            catagories.map(item => <p key={item} onClick={() => catagoryFilter(item)}>{item}</p>)
+            catagories.map(item => <p key={item} style={(currentFilters.categories == item)? {color: 'red'}:{}} onClick={() => setCurrentFilters(prev => ({ ...prev, categories: item }))}>{item}</p>)
           }
           <h2>Gender</h2>
           {
             gender.map((item, index) => (
-              <CheckboxText key={index} text={item} />
+              // <CheckboxText key={index} text={item} />
+              <p key={item} style={(currentFilters.gender == item)? {color: 'red'}:{}} onClick={() => setCurrentFilters(prev => ({ ...prev, gender: item }))}>{item}</p>
             ))
           }
           <h2>Price</h2>
           {
             price.map((item, index) => (
-              <CheckboxText key={index} text={item} />
+              // <CheckboxText key={index} text={item} />
+              <p key={index} style={(currentFilters.price.end == item.end)? {color: 'red'}:{}} onClick={() => setCurrentFilters(prev => ({ ...prev, price: { start: item.start, end: item.end } }))}>{item.start} - {item.end}</p>
             ))
           }
-          <h2>Sale</h2>
-          <CheckboxText text={'Sale'} />
+          {/* <h2>Sale</h2>
+          <p onClick={() => setCurrentFilters(prev => ({...prev, sale: true}))}>Sale</p> */}
+
         </div>
         <div className="products">
           {
             data.filterd.length === 0 ? (
               data.raw.map(item => (
-                <ProductCard key={item.id} id={item.id} name={item.name} brand={item.brand} gender={item.gender} category={item.category} price={item.price} items_left={item.items_left} imageURL={item.imageURL} rating={item.rating} />
+                <ProductCard key={item.id} item={item} />
               ))
             ) : (
               data.filterd.map(item => (
-                <ProductCard key={item.id} id={item.id} name={item.name} brand={item.brand} gender={item.gender} category={item.category} price={item.price} items_left={item.items_left} imageURL={item.imageURL} rating={item.rating} />
+                <ProductCard key={item.id} item={item}/>
               ))
             )
           }

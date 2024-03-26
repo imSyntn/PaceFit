@@ -2,6 +2,7 @@
     min-height: calc(100vh - 70px);
     // background: rgb(72, 222, 102);
     padding-top: 60px;
+    margin-bottom: 50px;
     padding-inline: 60px;
 
     >h1 {
@@ -77,6 +78,17 @@
             // border: 1px solid rgb(0, 255, 13);
             // background: rgb(239, 239, 239);
             transition: all 0.3s;
+            >.clearFilters {
+                float: right;
+                >button {
+                    width: 70px;
+                    height: 30px;
+                    font-size: 18px;
+                    border-radius: 15px;
+                    background: none;
+                    font-weight: 500;
+                }
+            }
             h2 {
                 margin-block: 2.5px;
             }
