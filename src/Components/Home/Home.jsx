@@ -17,8 +17,8 @@ import RemarkCard from './RemarkCard'
 import casualImg from '../../Assets/casual-man.jpg'
 import SaleBanner from './SaleBanner';
 import AdvantageCard from './AdvantageCard';
-import { FaLock } from "react-icons/fa6";
-import { FaBox, FaHandHoldingHeart } from "react-icons/fa";
+import { FaLock, FaHandshake } from "react-icons/fa6";
+import { FaBox } from "react-icons/fa";
 
 
 
@@ -44,7 +44,7 @@ const Home = () => {
     const advantages = [
         { title: 'SECURE PAYMENT', desc: 'All our payments our SSL secured', icon: FaLock },
         { title: 'DELIVERED WITH CARE', desc: 'Super fast shipping to your door', icon: FaBox },
-        { title: 'EXCELLENT SERVICE', desc: 'Live chat and phone support', icon: FaHandHoldingHeart }
+        { title: 'EXCELLENT SERVICE', desc: 'Live chat and phone support', icon: FaHandshake }
     ]
     const galleryCardText = [
         { type: 'Sports shoes', gender: 'MEN' },

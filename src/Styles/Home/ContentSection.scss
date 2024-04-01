@@ -23,6 +23,10 @@
             // background: rgb(227, 227, 227);
             >svg {
                 font-size: 40px;
+                transition: none !important;
+                &:hover {
+                    fill: #ffbf26;
+                }
             }
         }
 

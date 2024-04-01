@@ -3,12 +3,13 @@ header {
     height: 60px;
     width: 100vw;
     top: 0;
-    border: none;
+    // border: 1px solid green;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-inline: 100px;
-    backdrop-filter: blur(20px);
+    padding-inline: 50px;
+    background: rgba(255, 255, 255, 0.566);
+    backdrop-filter: blur(25px);
     z-index: 10;
 
     >img {
@@ -16,27 +17,33 @@ header {
         filter: invert(100%);
 
     }
+
     >.routes {
         width: 40vw;
         display: flex;
         justify-content: space-between;
         align-items: center;
         // border: 1px solid red;
+
         a {
             text-decoration: none;
+
             svg {
                 font-size: 25px;
             }
         }
+
         .active {
             text-decoration: underline;
             text-underline-offset: 3px;
             text-decoration-thickness: 2px;
             text-decoration-color: #ffbf26;
         }
+
         .cartIcon {
             // border: 1px solid red;
             position: relative;
+
             >p {
                 position: absolute;
                 top: -5px;
@@ -54,7 +61,40 @@ header {
             }
         }
     }
+
+    .bar {
+        display: none;
+    }
 }
+
+@media screen and (max-width: 860px) {
+    header {
+        // backdrop-filter:  none;
+        // background: white;
+        .routes {
+            position: absolute;
+            top: 100%;
+            left: 100%;
+            // transform: translateY(-100%);
+            width: 100%;
+            padding-inline: calc(100vw / 19);
+            background: rgba(255, 255, 255, 0.566);
+            backdrop-filter: blur(25px);
+            transition: all 0.3s;
+        }
+        .visible {
+            top: 100%;
+            left: 0;
+            // background: white;
+            // transform: translateX(-50%);
+        }
+        .bar {
+            display: block;
+            cursor: pointer;
+        }
+    }
+}
+
 // .input-box {
 //     position: absolute;
 //     top: 50%;

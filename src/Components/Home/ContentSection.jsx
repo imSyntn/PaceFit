@@ -15,10 +15,10 @@ const ContentSection = ({ heading, id }) => {
     }, [])
 
     const slideLeft = () => {
-        document.querySelector(`.swipe${id}`).scrollLeft += 260;
+        document.querySelector(`.swipe${id}`).scrollLeft += 200;
     }
     const slideRight = () => {
-        document.querySelector(`.swipe${id}`).scrollLeft -= 260;
+        document.querySelector(`.swipe${id}`).scrollLeft -= 200;
     }
 
     return (
@@ -40,7 +40,7 @@ const ContentSection = ({ heading, id }) => {
                 <button className='right' onClick={slideLeft}><FaAngleRight /></button>
                 <div className={`swipe${id} swipeCont`}>
                     {
-                        arr.map((item, index) => (
+                        arr.splice(0,6).map((item, index) => (
                             // <SwiperSlide key={index}>
                             <ContentCard key={index} img={item.imageURL} />
                             // {/* </SwiperSlide> */}

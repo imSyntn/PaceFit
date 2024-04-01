@@ -22,7 +22,7 @@ const HeroSection = ({ images, currentImage }) => {
                     </div> */}
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" className="svg" width="160" height="120">
-                <path d="M50 100 Q100 10 130 110" fill="none" stroke="rgb(0, 0, 0)" stroke-width="2" marker-end="url(#arrowhead)" stroke-dasharray="5,5" />
+                <path d="M50 100 Q100 10 130 110" fill="none" stroke="rgb(0, 0, 0)" strokeWidth="2" markerEnd="url(#arrowhead)" strokeDasharray="5,5" />
                 <marker id="arrowhead" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto">
                     <polygon points="0,0 5,2.5 0,5" fill="rgb(0, 0, 0)" />
                 </marker>

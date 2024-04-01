@@ -26,6 +26,12 @@ const Shop = () => {
     }
   })
 
+  const selectedStyle = {
+    color: '#ff2660',
+    fontWeight: 'bold',
+    letterSpacing: '1px'
+  }
+
   const defaultSorting = Object.values(Data)
 
   const sorting = (value) => {
@@ -111,11 +117,11 @@ const Shop = () => {
         </div>
         <select name="sorting" id="select" onChange={(e) => sorting(e.target.value)}>
           <option value="default" defaultValue={true}>Default sorting</option>
-          <option value="popularity">Sort by popularity</option>
-          <option value="rating">Sort by average rating</option>
-          <option value="date">Sort by latest</option>
-          <option value="priceLow">Sort by price: low to high</option>
-          <option value="priceHigh">Sort by price: high to low</option>
+          <option value="popularity">Popularity</option>
+          <option value="rating">Rating</option>
+          <option value="date">Latest</option>
+          <option value="priceLow">Low to high</option>
+          <option value="priceHigh">High to low</option>
         </select>
       </div>
       <div className="shopContainer">
@@ -137,20 +143,20 @@ const Shop = () => {
           </div>
           <h2>Catagories</h2>
           {
-            catagories.map(item => <p key={item} style={(currentFilters.categories == item)? {color: 'red'}:{}} onClick={() => setCurrentFilters(prev => ({ ...prev, categories: item }))}>{item}</p>)
+            catagories.map(item => <p key={item} style={(currentFilters.categories == item)? selectedStyle :{}} onClick={() => setCurrentFilters(prev => ({ ...prev, categories: item }))}>{item}</p>)
           }
           <h2>Gender</h2>
           {
             gender.map((item, index) => (
               // <CheckboxText key={index} text={item} />
-              <p key={item} style={(currentFilters.gender == item)? {color: 'red'}:{}} onClick={() => setCurrentFilters(prev => ({ ...prev, gender: item }))}>{item}</p>
+              <p key={item} style={(currentFilters.gender == item)? selectedStyle:{}} onClick={() => setCurrentFilters(prev => ({ ...prev, gender: item }))}>{item}</p>
             ))
           }
           <h2>Price</h2>
           {
             price.map((item, index) => (
               // <CheckboxText key={index} text={item} />
-              <p key={index} style={(currentFilters.price.end == item.end)? {color: 'red'}:{}} onClick={() => setCurrentFilters(prev => ({ ...prev, price: { start: item.start, end: item.end } }))}>{item.start} - {item.end}</p>
+              <p key={index} style={(currentFilters.price.end == item.end)? selectedStyle:{}} onClick={() => setCurrentFilters(prev => ({ ...prev, price: { start: item.start, end: item.end } }))}>{item.start} - {item.end}</p>
             ))
           }
           {/* <h2>Sale</h2>

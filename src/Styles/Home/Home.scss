@@ -1,12 +1,15 @@
 .gallery-section {
     // padding: 50px 50px 0 50px;
-    padding-left: 50px;
+    // padding-left: 50px;
     // div {
     display: flex;
     // align-items: ;
     justify-content: space-evenly;
     flex-wrap: wrap;
     // }
+    @media screen and (min-width: 759px) {
+        padding-inline: 50px;
+    }
 }
 
 .aft {
@@ -17,6 +20,7 @@
 .remarks {
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .advantages {
@@ -36,24 +40,3 @@
 // }
 
 
-@keyframes updown {
-    0% {
-        top: 50%
-    }
-
-    25% {
-        top: 49.5%
-    }
-
-    50% {
-        top: 50%;
-    }
-
-    75% {
-        top: 50.5%;
-    }
-
-    100% {
-        top: 50%
-    }
-}

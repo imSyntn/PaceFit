@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../Styles/Header.scss'
 import { Link, useLocation } from 'react-router-dom'
 import { FaShoppingBag, FaUser } from "react-icons/fa";
+import { FaBars } from "react-icons/fa6";
 import { useSelector } from 'react-redux';
 import Logo from '../Assets/PaceFit Logo.png'
 
@@ -24,12 +25,12 @@ const Header = () => {
     //     women: false,
     //     kids: false,
     // })
-    // console.log(location)
+    // console.log(showAccordian)
 
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth > 760) {
-                setShowAccordian(true)
+            if (window.innerWidth > 860) {
+                setShowAccordian(false)
             }
         }
         window.addEventListener('resize', handleResize);
@@ -96,13 +97,14 @@ const Header = () => {
                 user: true
             })
         }
-    },[location])
+    }, [location])
 
     return (
         <>
             <header>
                 <img src={Logo} alt="logo" />
-                <div className="routes">
+
+                <div className={`routes ${showAccordian ? 'visible' : ''}`}>
                     <Link to='/' className={active.home && 'active'} onClick={() => setActive({
                         home: true,
                         about: false,
@@ -144,7 +146,7 @@ const Header = () => {
                         user: false
                     })}>
                         <div className="cartIcon">
-                            <FaShoppingBag style={active.cart ? {fill: '#ff9205'} : ''} />
+                            <FaShoppingBag style={active.cart ? { fill: '#ff9205' } : ''} />
                             <p>{cartItems.length}</p>
                         </div>
                     </Link>
@@ -155,8 +157,10 @@ const Header = () => {
                         contact: false,
                         cart: false,
                         user: true
-                    })}><FaUser  style={active.user ? {fill: '#ff9205'} : ''}/></Link>
+                    })}><FaUser style={active.user ? { fill: '#ff9205' } : ''} /></Link>
                 </div>
+
+                <FaBars className='bar' onClick={()=> setShowAccordian(prev => !prev)} />
             </header>
         </>
     )

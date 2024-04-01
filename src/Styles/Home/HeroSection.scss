@@ -33,8 +33,29 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        animation: updown infinite 1700ms linear;
+        animation: updown infinite 2s linear;
         display: flex;
+        @keyframes updown {
+            0% {
+                top: 50%
+            }
+        
+            25% {
+                top: 49.5%
+            }
+        
+            50% {
+                top: 50%;
+            }
+        
+            75% {
+                top: 51.5%;
+            }
+        
+            100% {
+                top: 50%
+            }
+        }
         // overflow-x: auto;
 
         // >.hero-images {
@@ -49,10 +70,11 @@
         //     scroll-behavior: smooth;
         //     pointer-events: none;
         >img {
-            height: 30.3vw;
+            // height: 30.3vw;
             width: 40vw;
+            aspect-ratio: 40 / 30.3;
             filter: drop-shadow(0px 25px 50px rgb(0, 0, 0));
-            margin-inline: 25vw;
+            // margin-inline: 25vw;
             transition: all 0.3s;
             // position: absolute;
             // &:nth-child(1){
@@ -78,6 +100,7 @@
         top: 9%;
         fill: rgba(255, 255, 255, 0.546);
         transform: translate(-65%, -9%);
+        // animation: updown infinite 3s linear;
     }
 
     >.hero-discount {
@@ -112,7 +135,7 @@
         }
 
         >p {
-            
+
             font-weight: 500;
         }
     }
@@ -143,6 +166,7 @@
         flex-direction: column;
         justify-content: space-between;
 
+
         >.featured {
             border: none;
             border-radius: 20px;
@@ -157,7 +181,7 @@
             overflow: hidden;
 
             p {
-                
+                color: white;
                 font-size: 1rem;
                 letter-spacing: 3px;
                 font-weight: 500;
@@ -166,9 +190,9 @@
 
         >.collections {
             h1 {
-                
+
                 font-size: 3rem;
-                    color: brown;
+                color: brown;
 
                 span {
                     &:nth-child(1) {
@@ -197,7 +221,7 @@
             button {
                 width: 150px;
                 height: 35px;
-                
+
                 font-size: 1rem;
                 border-radius: 10px;
                 cursor: pointer;
@@ -209,6 +233,7 @@
                     font-weight: 700;
                     letter-spacing: 1px;
                     transition: all 0.2s;
+
                     // text-shadow: 0px 0px 2px black;
                     &:hover {
                         color: rgb(255, 255, 255);
@@ -237,6 +262,7 @@
                         transition: left 0.3s;
                         z-index: -1;
                     }
+
                     svg {
                         transition: none;
                     }
@@ -244,6 +270,7 @@
                     &:hover {
                         border-color: #2575fc;
                         color: white;
+
                         svg {
                             fill: white;
                         }
@@ -263,5 +290,163 @@
 
     >button {
         background: none;
+    }
+}
+
+
+@media screen and (max-width: 1000px) {
+    .Hero-section {
+        .stoked-text {
+            >h1 {
+                font-size: 20vw;
+            }
+        }
+        .hero-image-section {
+            >img {
+                width: 50vw;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .Hero-section {
+        .stoked-text {
+            >h1 {
+                font-size: 30vw;
+            }
+        }
+        .hero-image-section {
+            >img {
+                width: 70vw;
+            }
+        }
+        .hero-image-details {
+            left: 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .Hero-section {
+        .hero-image-details {
+            left: 15px;
+            // >.featured {
+            //     border: none;
+            //     border-radius: 20px;
+            //     background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);                
+            //     width: 150px;
+            //     height: 30px;
+            //     display: flex;
+            //     align-items: center;
+            //     justify-content: center;
+            //     position: relative;
+            //     overflow: hidden;
+    
+            //     p {
+            //         color: white;
+            //         font-size: 1rem;
+            //         letter-spacing: 3px;
+            //         font-weight: 500;
+            //     }
+            // }
+    
+            >.collections {
+                h1 {
+                    font-size: 3rem;
+                    // color: brown;
+                    span {
+                        // &:nth-child(1) {
+                        //     color: transparent;
+                        //     background-image: linear-gradient(to right, #ffd500 0%, #ff4e50 100%);
+                        //     background-clip: text;
+                        //     -webkit-background-clip: text;
+                        //     -moz-background-clip: text;
+                        // }
+    
+                        &:nth-child(2) {
+                            // display: block;
+                            // color: transparent;
+                            font-size: 2.9rem;
+                            // -webkit-text-stroke: 2px rgba(0, 0, 0, 0.751);
+                            // letter-spacing: 3px;
+                        }
+                    }
+                }
+            }
+    
+            // >.btns {
+            //     display: flex;
+            //     justify-content: space-between;
+    
+            //     button {
+            //         width: 150px;
+            //         height: 35px;
+    
+            //         font-size: 1rem;
+            //         border-radius: 10px;
+            //         cursor: pointer;
+    
+            //         &:nth-child(1) {
+            //             // background: #00afff;
+            //             background-image: linear-gradient(to right, #f9d423 0%, #ff4e50 100%);
+            //             border: none;
+            //             font-weight: 700;
+            //             letter-spacing: 1px;
+            //             transition: all 0.2s;
+    
+            //             // text-shadow: 0px 0px 2px black;
+            //             &:hover {
+            //                 color: rgb(255, 255, 255);
+            //             }
+            //         }
+    
+            //         &:nth-child(2) {
+            //             background: none;
+            //             display: flex;
+            //             align-items: center;
+            //             justify-content: center;
+            //             border: 1px solid #ff4e50;
+            //             position: relative;
+            //             overflow: hidden;
+            //             z-index: 1;
+    
+            //             &::before {
+            //                 content: "";
+            //                 width: 150px;
+            //                 height: 35px;
+            //                 // background: #ff4e50;
+            //                 // background-image: linear-gradient(to right, #f9d423 0%, #ff4e50 100%);
+            //                 background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+            //                 position: absolute;
+            //                 left: -101%;
+            //                 transition: left 0.3s;
+            //                 z-index: -1;
+            //             }
+    
+            //             svg {
+            //                 transition: none;
+            //             }
+    
+            //             &:hover {
+            //                 border-color: #2575fc;
+            //                 color: white;
+    
+            //                 svg {
+            //                     fill: white;
+            //                 }
+    
+            //                 &::before {
+            //                     left: 0;
+            //                 }
+            //             }
+    
+            //             >svg {
+            //                 margin-left: 10px;
+            //             }
+            //         }
+            //     }
+            // }
+        }
     }
 }

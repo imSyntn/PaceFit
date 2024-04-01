@@ -50,7 +50,7 @@ const ProductDetails = () => {
                     <p>{product.gender}</p>
                     <h1>{product.brand}</h1>
                     <h2>{product.name}</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet non excepturi aut maxime nisi id nulla enim voluptatum cumque iusto, minima nobis dolorem quibusdam laboriosam quod quos pariatur. Dolorum architecto quis asperiores corporis minus, earum ab ut eveniet sunt commodi accusantium voluptatem iusto pariatur placeat assumenda maiores sed officiis eaque a molestias sit hic corrupti rem. Sit quo, quis maiores maxime commodi repellat soluta veritatis</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet non excepturi aut maxime nisi id nulla enim voluptatum cumque iusto, minima nobis dolorem quibusdam laboriosam quod quos pariatur. Dolorum architecto quis asperiores corporis minus, earum ab ut eveniet sunt commodi accusantium voluptatem iusto pariatur placeat assumenda maiores sed officiis eaque a molestias sit hic veritatis</p>
                     <h2>${product.price}</h2>
                     {/* <AddRemove item={product} /> */}
                     <div className="cartDiv" >

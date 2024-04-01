@@ -6,8 +6,9 @@
 
     >.imageDesc {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-evenly;
-        height: 394px;
+        min-height: 394px;
         // border: 1px solid orangered;
         // overflow: hidden;
         >.imgSection {
@@ -22,23 +23,25 @@
                     width: 70px;
                 }
             }
-            // >img {
-            //     // width: 40%;
-            //     // height: 90%;
-            //     // border: 1px solid rgb(0, 200, 255);
-            // }
+            >img {
+                width: 350px;
+                // height: 90%;
+                // border: 1px solid rgb(0, 200, 255);
+            }
         }
 
         >.right {
-            width: 40%;
+            width: 350px;
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            margin-left: 50px;
             // overflow-y: auto;
             // border: 1px solid rgb(17, 0, 255);
             >p {
                 >span {
+                    margin-left: 5px;
                     color: green;
                 }
             }
@@ -58,6 +61,7 @@
     }
     >.reviewsDiv {
         padding-top: 50px;
+        margin-bottom: 20px;
         >.cont {
             // border: 1px solid red;
             display: flex;
@@ -74,10 +78,10 @@
         }
         >form {
             border: 1px solid rgb(167, 54, 54);
-            padding: 50px;
+            padding: 2vw;
             >p{
                 font-size: 20px;
-                margin-bottom: 20px;
+                margin-bottom: 1vw;
                 span {
                     color: red;
                 }
@@ -85,7 +89,7 @@
             textarea {
                 height: 100px;
                 width: 100%;
-                margin-bottom: 20px;
+                margin-bottom: 1vw;
                 padding: 10px;
                 font-size: 20px;
                 color: rgb(57, 57, 57);
@@ -95,7 +99,7 @@
                 font-size: 20px;
             }
             button {
-                margin-top: 20px;
+                margin-top: 1vw;
                 width: 100px;
                 height: 35px;
                 background: rgb(255, 103, 47);
@@ -105,5 +109,79 @@
                 cursor: pointer;
             }
         }
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .ProductDetails {
+        // min-height: calc(100vh - 90px);
+        // // background: rgb(72, 222, 102);
+        padding-top: 70px;
+        // padding-inline: 60px;
+    
+        >.imageDesc {
+            // display: flex;
+            // flex-wrap: wrap;
+            justify-content: center;
+            // min-height: 394px;
+            // // border: 1px solid orangered;
+            // overflow: hidden;
+            >.imgSection {
+                // display: flex;
+                // margin-bottom: 20px;
+                flex-direction: column-reverse;
+                >.imgsDiv {
+                    // margin-right: 10px;
+                    // display: flex;
+                    flex-direction: row;
+                    margin-top: 10px;
+                    // justify-content: space-evenly;
+                    // // border: 1px solid rgb(81, 255, 0);
+                    >img {
+                        border: 1px solid rgb(210, 210, 210);
+                    }
+                }
+                >img {
+                    // width: 100%;
+                    // height: 90%;
+                    // border: 1px solid rgb(0, 200, 255);
+                }
+            }
+    
+            >.right {
+                width: 100%;
+                // height: 100%;
+                // display: flex;
+                // flex-direction: column;
+                // justify-content: space-between;
+                margin-left: 0px;
+                // overflow-y: auto;
+                // border: 1px solid rgb(17, 0, 255);
+                >p {
+                    margin-block: 15px;
+                    // >span {
+                    //     color: green;
+                    // }
+                }
+                // >.cartDiv {
+                //     position: relative;
+                //     // border: 1px solid red;
+                //     height: 45px;
+                //     display: flex;
+                //     align-items: center;
+                //     >.addToCart {
+                //         opacity: 1;
+                //         top: 0;
+                //         left: 0;
+                //     }
+                // }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .ProductDetails {
+        padding-inline: 15px;
     }
 }

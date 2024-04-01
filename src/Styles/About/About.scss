@@ -1,5 +1,5 @@
 .About {
-    height: calc(100vh - 70px);
+    min-height: calc(100vh - 70px);
     padding-top: 60px;
     padding-inline: 60px;
     display: flex;
@@ -8,6 +8,7 @@
     justify-content: space-evenly;
     >h1 {
         font-weight: 400;
+        text-align: center;
     }
     >p {
         text-align: center;
