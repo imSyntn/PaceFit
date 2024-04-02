@@ -12,10 +12,11 @@ const Shop = () => {
     raw: Object.values(Data),
     filterd: []
   })
+  const [input, setInput] = useState('')
 
-  useEffect(() => {
-    console.log(data)
-  }, [data])
+  // useEffect(()=>{
+  //   console.log(input)
+  // },[input])
 
   const [currentFilters, setCurrentFilters] = useState({
     categories: '',
@@ -34,46 +35,68 @@ const Shop = () => {
 
   const defaultSorting = Object.values(Data)
 
+  const handleSearch = () => {
+    const newData = defaultSorting.filter((item) => {
+      let brandSearch = item.brand.toLowerCase().includes(input.toLowerCase())
+      // if(brandSearch) {brandSearch = true;}
+      let catagorySearch = item.category.toLowerCase().includes(input.toLowerCase())
+      // if(catagorySearch.length == 0) {catagorySearch = true;}
+      let nameSearch = item.name.toLowerCase().includes(input.toLowerCase())
+      // if(nameSearch.length == 0) {nameSearch = true;}
+      return brandSearch || catagorySearch || nameSearch
+    })
+    // console.log(newData)
+    setData(prev => ({
+      ...prev,
+      filterd: newData
+    }))
+  }
+
+  // useEffect(()=>{
+  //   console.log(data)
+  // },[data])
+
   const sorting = (value) => {
+    if(data.filterd.length == 0) {
+      sortingFunc(value, 'raw')
+    } else sortingFunc(value, 'filtered')
+  }
+
+  const sortingFunc = (value, name) => {
     if (value === 'default') {
       setData(prev => ({
         ...prev,
-        raw: defaultSorting
+        name: defaultSorting
       }))
-    }
-    if (value === 'popularity') {
-      const sorted = data.raw.sort((a, b) => a.popularity - b.popularity)
+    }else if (value === 'popularity') {
+      const sorted = data[name].sort((a, b) => a.popularity - b.popularity)
       setData(prev => ({
         ...prev,
-        raw: sorted
+        name: sorted
       }))
-    }
-    if (value === 'rating') {
-      const sorted = data.raw.sort((a, b) => a.rating - b.rating)
+    }else if (value === 'rating') {
+      const sorted = data[name].sort((a, b) => a.rating - b.rating)
       setData(prev => ({
         ...prev,
-        raw: sorted
+        name: sorted
       }))
-    }
-    if (value === 'date') {
-      const sorted = data.raw.sort((a, b) => new Date(a.dateAdded) - new Date(b.dateAdded))
+    }else if (value === 'date') {
+      const sorted = data[name].sort((a, b) => new Date(a.dateAdded) - new Date(b.dateAdded))
       setData(prev => ({
         ...prev,
-        raw: sorted
+        name: sorted
       }))
-    }
-    if (value === 'priceLow') {
-      const sorted = data.raw.sort((a, b) => a.price - b.price)
+    }else if (value === 'priceLow') {
+      const sorted = data[name].sort((a, b) => a.price - b.price)
       setData(prev => ({
         ...prev,
-        raw: sorted
+        name: sorted
       }))
-    }
-    if (value === 'priceHigh') {
-      const sorted = data.raw.sort((a, b) => b.price - a.price)
+    }else if (value === 'priceHigh') {
+      const sorted = data[name].sort((a, b) => b.price - a.price)
       setData(prev => ({
         ...prev,
-        raw: sorted
+        name: sorted
       }))
     }
   }
@@ -88,12 +111,11 @@ const Shop = () => {
   }
 
   useEffect(() => {
-    console.log('eff')
     if (currentFilters.categories != '' || currentFilters.gender != '' || currentFilters.price.start != false || currentFilters.price.start != false) {
       let filteredVal = filterReq(currentFilters.categories, currentFilters.gender, currentFilters.price)
       console.log('filteredVal', filteredVal)
       if (filteredVal.length === 0) {
-        filteredVal = [{noData: true}]
+        filteredVal = [{ noData: true }]
         setData(prev => ({ ...prev, filterd: filteredVal }))
       } else {
         setData(prev => ({ ...prev, filterd: filteredVal }))
@@ -112,8 +134,8 @@ const Shop = () => {
       <div className="searchDiv">
         <div onClick={() => setOpen(prev => !prev)}><FaBars /><span>Filter</span></div>
         <div className="inpBtn">
-          <input type="text" name="search" placeholder='Search here...' id="" />
-          <button><FaSearch /></button>
+          <input type="text" name="search" placeholder='Search here...' id="" value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => {if(e.key === 'Enter'){handleSearch()}}} />
+          <button onClick={handleSearch}><FaSearch /></button>
         </div>
         <select name="sorting" id="select" onChange={(e) => sorting(e.target.value)}>
           <option value="default" defaultValue={true}>Default sorting</option>
@@ -128,7 +150,7 @@ const Shop = () => {
         <div className={`filterDiv ${open && 'open'}`}>
           <div className="clearFilters">
             {
-              (currentFilters.categories !== '' || currentFilters.gender !== '' || currentFilters.price.start !==false) && <button onClick={() => {
+              (currentFilters.categories !== '' || currentFilters.gender !== '' || currentFilters.price.start !== false) && <button onClick={() => {
                 setData(prev => ({ ...prev, filterd: [] }))
                 setCurrentFilters({
                   categories: '',
@@ -143,35 +165,39 @@ const Shop = () => {
           </div>
           <h2>Catagories</h2>
           {
-            catagories.map(item => <p key={item} style={(currentFilters.categories == item)? selectedStyle :{}} onClick={() => setCurrentFilters(prev => ({ ...prev, categories: item }))}>{item}</p>)
+            catagories.map(item => <p key={item} style={(currentFilters.categories == item) ? selectedStyle : {}} onClick={() => setCurrentFilters(prev => ({ ...prev, categories: item }))}>{item}</p>)
           }
           <h2>Gender</h2>
           {
             gender.map((item, index) => (
               // <CheckboxText key={index} text={item} />
-              <p key={item} style={(currentFilters.gender == item)? selectedStyle:{}} onClick={() => setCurrentFilters(prev => ({ ...prev, gender: item }))}>{item}</p>
+              <p key={item} style={(currentFilters.gender == item) ? selectedStyle : {}} onClick={() => setCurrentFilters(prev => ({ ...prev, gender: item }))}>{item}</p>
             ))
           }
           <h2>Price</h2>
           {
             price.map((item, index) => (
               // <CheckboxText key={index} text={item} />
-              <p key={index} style={(currentFilters.price.end == item.end)? selectedStyle:{}} onClick={() => setCurrentFilters(prev => ({ ...prev, price: { start: item.start, end: item.end } }))}>{item.start} - {item.end}</p>
+              <p key={index} style={(currentFilters.price.end == item.end) ? selectedStyle : {}} onClick={() => setCurrentFilters(prev => ({ ...prev, price: { start: item.start, end: item.end } }))}>{item.start} - {item.end}</p>
             ))
           }
           {/* <h2>Sale</h2>
           <p onClick={() => setCurrentFilters(prev => ({...prev, sale: true}))}>Sale</p> */}
 
         </div>
-        <div className="products">
+        <div className="products" key="products">
           {
             data.filterd.length === 0 ? (
-              data.raw.map(item => (
-                <ProductCard key={item.id} item={item} />
-              ))
+              (input.length > 0) ? (
+                <h1 key="no-result">No Result</h1>
+              ) : (
+                data.raw.map(item => (
+                  <ProductCard key={item.id} item={item} />
+                ))
+              )
             ) : (
               data.filterd.map(item => (
-                <ProductCard key={item.id} item={item}/>
+                <ProductCard key={item.id} item={item} />
               ))
             )
           }

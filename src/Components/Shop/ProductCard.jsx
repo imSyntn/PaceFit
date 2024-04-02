@@ -10,7 +10,7 @@ const ProductCard = ({ item }) => {
 
 
     return (
-        <>
+        <div className='parentComp'>
             {
                 (item.noData) ? (
                     <div className="noData">
@@ -18,20 +18,6 @@ const ProductCard = ({ item }) => {
                     </div>
                 ) : (
                     <Link to={`/ProductDetails/${item.id}`} className='ProductCard'>
-                        {/* <div className="addToCart" onClick={(e) => {
-                e.preventDefault()
-                dispatch(add({
-                    id,
-                    name,
-                    brand,
-                    gender,
-                    price,
-                    imageURL,
-                    quantity: 1
-                }))
-            }}>
-                <FaCartShopping />
-            </div> */}
                         <AddToCart id={item.id} name={item.name} brand={item.brand} gender={item.gender} price={item.price} imageURL={item.imageURL} quantity={1} />
                         <img src={item.imageURL} alt="image" />
                         <div className="desc">
@@ -45,7 +31,7 @@ const ProductCard = ({ item }) => {
                     </Link>
                 )
             }
-        </>
+        </div>
     )
 }
 

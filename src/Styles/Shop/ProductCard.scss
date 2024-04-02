@@ -1,40 +1,48 @@
-.ProductCard {
-    width: 328px;
-    overflow: hidden;
-    border-radius: 5px;
+.parentComp {
     position: relative;
-    text-decoration: none;
     &:hover {
         transform: scale(1.03);
-        >.addToCart {
-            opacity: 1;
-        }
     }
-    >img {
-        height: 328px;
+    .ProductCard {
         width: 328px;
+        // height: fit-content;
+        overflow: hidden;
         border-radius: 5px;
-        // border: 1px solid rgb(255, 0, 0);
-    }
-    >.desc{
-        padding-inline: 2px;
-        >.brandStar {
-            border-block: 1px solid rgb(193, 193, 193);
-            padding-block: 10px;
-            display: flex;
-            justify-content: space-between;
+        // position: relative;
+        text-decoration: none;
+        // border: 1px solid red;
+        &:hover {
+            // transform: scale(1.03);
+            >.addToCart {
+                opacity: 1;
+            }
         }
-        >.name {
-            font-weight: 500;
-            padding-top: 5px;
+        >img {
+            height: 328px;
+            width: 328px;
+            border-radius: 5px;
+            // border: 1px solid rgb(255, 0, 0);
         }
-        >.price {
-            font-weight: 500;
-            padding-top: 5px;
-            >span {
-                margin-right: 9px;
-                text-decoration: line-through;
-                color: gray;
+        >.desc{
+            padding-inline: 2px;
+            >.brandStar {
+                border-block: 1px solid rgb(193, 193, 193);
+                padding-block: 10px;
+                display: flex;
+                justify-content: space-between;
+            }
+            >.name {
+                font-weight: 500;
+                padding-top: 5px;
+            }
+            >.price {
+                font-weight: 500;
+                padding-top: 5px;
+                >span {
+                    margin-right: 9px;
+                    text-decoration: line-through;
+                    color: gray;
+                }
             }
         }
     }
