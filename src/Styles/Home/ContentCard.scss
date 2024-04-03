@@ -4,6 +4,7 @@
     max-width: 260px;
     height: 300px;
     // background-color: rgba(80, 80, 80, 0.153);
+    text-decoration: none;
     border: none;
     border-radius: 10px;
     margin-inline: 10px;
@@ -49,12 +50,12 @@
                 padding-right: 10px;
 
                 &:nth-child(1) {
-                    font-weight: bold;
+                    text-decoration: line-through;
+                    color: rgb(78, 78, 78);
                 }
 
                 &:nth-child(2) {
-                    text-decoration: line-through;
-                    color: rgb(78, 78, 78);
+                    font-weight: bold;
                 }
 
                 &:nth-child(3) {

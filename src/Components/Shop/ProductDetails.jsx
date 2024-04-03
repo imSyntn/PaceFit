@@ -7,10 +7,17 @@ import data from '../../FakeData.json'
 import AddToCart from './AddToCart';
 // import StarsCantChanged from './StarsCantChanged'
 import Stars from './Stars';
+import ReviewCard from './ReviewCard';
 
 const ProductDetails = () => {
     // const cartItems = useSelector(state => state.CartSlice.cartItems)
-    const [product, setProduct] = useState(false)
+    const [product, setProduct] = useState([])
+    const [formData, setFormData] = useState({
+        name: "",
+        text: "",
+        userRating: 0
+    })
+    const [handleReview, setHandleReview] = useState([])
     // const [availableInCart, setAvailableInCart] = useState(false)
     // const [, forceUpdate] = useReducer(x=>x+1,0)
     const { id } = useParams()
@@ -18,10 +25,30 @@ const ProductDetails = () => {
 
     useEffect(() => {
         let prod = arr.find(item => item.id === Number(id))
-        // console.log('prod', prod.rating)
         setProduct(prod)
+        setHandleReview(prod.reviews)
         // available()
     }, [])
+
+    const handleStarClickedValue = (num)=> setFormData(prev => ({
+        ...prev,
+        userRating: num
+    }))
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        if(formData.name!=='' && formData.text!=='') {
+            setHandleReview(prev=> ([
+                ...prev,
+                formData
+            ]))
+            setFormData({
+                name: "",
+                text: "",
+                userRating: 0
+            })
+        }
+    }
 
     // const available = () => {
     //     const isAvailable = cartItems.find(item => item.id === Number(id))
@@ -50,7 +77,7 @@ const ProductDetails = () => {
                     <p>{product.gender}</p>
                     <h1>{product.brand}</h1>
                     <h2>{product.name}</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet non excepturi aut maxime nisi id nulla enim voluptatum cumque iusto, minima nobis dolorem quibusdam laboriosam quod quos pariatur. Dolorum architecto quis asperiores corporis minus, earum ab ut eveniet sunt commodi accusantium voluptatem iusto pariatur placeat assumenda maiores sed officiis eaque a molestias sit hic veritatis</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet non excepturi aut maxime nisi id nulla enim voluptatum cumque iusto, minima nobis dolorem quibusdam laboriosam quod quos pariatur. Dolorum architecto quis asperiores corporis minus, earum ab ut eveniet sunt commodi accusantium voluptatem iusto pariatur placeat assumenda maiores</p>
                     <h2>${product.price}</h2>
                     {/* <AddRemove item={product} /> */}
                     <div className="cartDiv" >
@@ -68,13 +95,31 @@ const ProductDetails = () => {
                         <Stars rating={product.rating} />
                     </div>
                 </div>
-                <p>No reviews, submit one</p>
+                <div className="reviewsContainer">
+                    {
+                        (handleReview?.length > 0) ? (
+                            handleReview.map((review, index) => (
+                                <ReviewCard key={index} review={review} />
+                            ))
+                        ) : (
+                            <p>No reviews, submit one</p>
+                        )
+                    }
+                </div>
                 <form action="">
+                    <p>Write your name <span>*</span>:</p>
+                    <input type="text" name="" id="" value={formData.name} onChange={(e)=> setFormData(prev => ({
+                        ...prev,
+                        name: e.target.value
+                    }))} />
                     <p>Write a Review <span>*</span>:</p>
-                    <textarea type="text" name="text" id="" />
+                    <textarea type="text" name="text" id="" value={formData.text} onChange={(e)=> setFormData(prev => ({
+                        ...prev,
+                        text: e.target.value
+                    }))} />
                     <p>Rating <span>*</span>:</p>
-                    <Stars />
-                    <button>Submit</button>
+                    <Stars handleStarClickedValue={handleStarClickedValue} />
+                    <button onClick={handleSubmit}>Submit</button>
                 </form>
             </div>
         </div>

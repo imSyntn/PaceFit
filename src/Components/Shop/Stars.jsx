@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { FaStar } from "react-icons/fa6";
 
-const Stars = ({ rating }) => {
+const Stars = ({ rating, handleStarClickedValue }) => {
     const [glow, setGlow] = useState({
         1: false,
         2: false,
@@ -10,6 +10,11 @@ const Stars = ({ rating }) => {
         5: false,
     })
     const [clicked, setClicked] = useState(false)
+
+    useEffect(()=> {
+        if(clicked) handleStarClickedValue(clicked)
+    },[clicked])
+
     const glowCss = {
         fill: '#FFBF26'
     }

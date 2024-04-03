@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './Components/Header'
 import Footer from './Components/Footer'
 import Fallback from './Components/Fallback'
+
 // const MenComponent = lazy(()=> import('./Components/Men'))\
 const Home = lazy(() => import('./Components/Home/Home'))
 const About = lazy(() => import('./Components/About/About'))
@@ -14,7 +15,12 @@ const User = lazy(() => import('./Components/User/User'))
 const ProductDetails = lazy(() => import('./Components/Shop/ProductDetails'))
 const NotAvailable = lazy(()=> import('./Components/NotAvailable'))
 
+
+
 const App = () => {
+
+  // const cartItems = useSelector(state=> state.)
+
   return (
     <BrowserRouter>
       <Header />

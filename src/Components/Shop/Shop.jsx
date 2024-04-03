@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import '../../Styles/Shop/Shop.scss'
 import { FaBars } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
@@ -13,6 +13,7 @@ const Shop = () => {
     filterd: []
   })
   const [input, setInput] = useState('')
+  const [searched, setSearched] = useState(false)
 
   // useEffect(()=>{
   //   console.log(input)
@@ -34,8 +35,10 @@ const Shop = () => {
   }
 
   const defaultSorting = Object.values(Data)
+  const defaultCatagoryResult = useRef([]);
 
   const handleSearch = () => {
+    setSearched(true)
     const newData = defaultSorting.filter((item) => {
       let brandSearch = item.brand.toLowerCase().includes(input.toLowerCase())
       // if(brandSearch) {brandSearch = true;}
@@ -45,58 +48,61 @@ const Shop = () => {
       // if(nameSearch.length == 0) {nameSearch = true;}
       return brandSearch || catagorySearch || nameSearch
     })
-    // console.log(newData)
+    defaultCatagoryResult.current = [...newData]
     setData(prev => ({
       ...prev,
       filterd: newData
     }))
   }
 
-  // useEffect(()=>{
+  // useEffect(() => {
   //   console.log(data)
-  // },[data])
+  // }, [data])
 
   const sorting = (value) => {
-    if(data.filterd.length == 0) {
+    if (data.filterd.length == 0) {
       sortingFunc(value, 'raw')
-    } else sortingFunc(value, 'filtered')
+    } else sortingFunc(value, 'filterd')
   }
 
   const sortingFunc = (value, name) => {
     if (value === 'default') {
+      // console.log(defaultCatagoryResult.current)
       setData(prev => ({
         ...prev,
-        name: defaultSorting
+        [name]: (name === 'raw') ? defaultSorting : defaultCatagoryResult.current
       }))
-    }else if (value === 'popularity') {
+    } else if (value === 'popularity') {
+      // console.log(defaultCatagoryResult.current)
       const sorted = data[name].sort((a, b) => a.popularity - b.popularity)
       setData(prev => ({
         ...prev,
-        name: sorted
+        [name]: sorted
       }))
-    }else if (value === 'rating') {
+    } else if (value === 'rating') {
+      // console.log(name)
       const sorted = data[name].sort((a, b) => a.rating - b.rating)
       setData(prev => ({
         ...prev,
-        name: sorted
+        [name]: sorted
       }))
-    }else if (value === 'date') {
+    } else if (value === 'date') {
       const sorted = data[name].sort((a, b) => new Date(a.dateAdded) - new Date(b.dateAdded))
       setData(prev => ({
         ...prev,
-        name: sorted
+        [name]: sorted
       }))
-    }else if (value === 'priceLow') {
+    } else if (value === 'priceLow') {
       const sorted = data[name].sort((a, b) => a.price - b.price)
       setData(prev => ({
         ...prev,
-        name: sorted
+        [name]: sorted
       }))
-    }else if (value === 'priceHigh') {
+    } else if (value === 'priceHigh') {
       const sorted = data[name].sort((a, b) => b.price - a.price)
       setData(prev => ({
         ...prev,
-        name: sorted
+        [name]: sorted
       }))
     }
   }
@@ -113,11 +119,13 @@ const Shop = () => {
   useEffect(() => {
     if (currentFilters.categories != '' || currentFilters.gender != '' || currentFilters.price.start != false || currentFilters.price.start != false) {
       let filteredVal = filterReq(currentFilters.categories, currentFilters.gender, currentFilters.price)
-      console.log('filteredVal', filteredVal)
+      // console.log(defaultCatagoryResult.current)
+      // console.log('ref',defaultCatagoryResult.current)
       if (filteredVal.length === 0) {
         filteredVal = [{ noData: true }]
         setData(prev => ({ ...prev, filterd: filteredVal }))
       } else {
+        defaultCatagoryResult.current = [...filteredVal]
         setData(prev => ({ ...prev, filterd: filteredVal }))
       }
     }
@@ -134,7 +142,7 @@ const Shop = () => {
       <div className="searchDiv">
         <div onClick={() => setOpen(prev => !prev)}><FaBars /><span>Filter</span></div>
         <div className="inpBtn">
-          <input type="text" name="search" placeholder='Search here...' id="" value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => {if(e.key === 'Enter'){handleSearch()}}} />
+          <input type="text" name="search" placeholder='Search here...' id="" value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') { handleSearch() } }} />
           <button onClick={handleSearch}><FaSearch /></button>
         </div>
         <select name="sorting" id="select" onChange={(e) => sorting(e.target.value)}>
@@ -188,16 +196,16 @@ const Shop = () => {
         <div className="products" key="products">
           {
             data.filterd.length === 0 ? (
-              (input.length > 0) ? (
+              (input.length > 0 && searched) ? (
                 <h1 key="no-result">No Result</h1>
               ) : (
-                data.raw.map(item => (
-                  <ProductCard key={item.id} item={item} />
+                data.raw.map((item,index) => (
+                  <ProductCard key={item.id * index} item={item} />
                 ))
               )
             ) : (
-              data.filterd.map(item => (
-                <ProductCard key={item.id} item={item} />
+              data.filterd.map((item,index) => (
+                <ProductCard key={item.id * index} item={item} />
               ))
             )
           }

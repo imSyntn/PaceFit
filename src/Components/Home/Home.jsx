@@ -12,19 +12,22 @@ import five from '../../Assets/Hero Section/5.png'
 
 
 import HeroSection from './HeroSection';
-import TrendingLatest from './TrendingLatest';
+import ContentSection from './ContentSection';
 import RemarkCard from './RemarkCard'
 import casualImg from '../../Assets/casual-man.jpg'
 import SaleBanner from './SaleBanner';
 import AdvantageCard from './AdvantageCard';
 import { FaLock, FaHandshake } from "react-icons/fa6";
 import { FaBox } from "react-icons/fa";
+import Data from '../../FakeData.json'
 
 
 
 const Home = () => {
 
     const images = [one, two, three, four, five]
+
+    const arr = Object.values(Data)
 
     // const [currentImage, setCurrentImage] = useState(0);
     let xIndex = 10;
@@ -56,18 +59,22 @@ const Home = () => {
     return (
         <>
             <HeroSection images={images} />
-            <TrendingLatest />
-                <h1 className='aft'>COLLECTIONS</h1>
+            {/* <TrendingLatest /> */}
+            <div className="Trending-Latest">
+                <ContentSection heading={"TRENDING"} arr={arr} id={1} />
+                <ContentSection heading={"LATEST"} arr={arr} id={2} />
+            </div>
+            <h1 className='aft'>COLLECTIONS</h1>
             <div className="gallery-section">
                 {/* <div> */}
-                    {
-                        galleryCardText.map((item, index) => (
-                            <GalleryImageCard key={index} item={item} />
-                        ))
-                    }
+                {
+                    galleryCardText.map((item, index) => (
+                        <GalleryImageCard key={index} item={item} />
+                    ))
+                }
                 {/* </div> */}
             </div>
-                <h1 className='aft'>REMARKS</h1>
+            <h1 className='aft'>REMARKS</h1>
             <div className="remarks">
                 {
                     userRemarks.map((item, index) => (
