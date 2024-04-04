@@ -1,16 +1,12 @@
-import React, { useState, useEffect, useReducer } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import '../../Styles/Shop/ProductDetails.scss'
-// import AddRemove from '../Cart/AddRemove';
 import { useParams } from 'react-router-dom';
-// import { useSelector } from 'react-redux'
 import data from '../../FakeData.json'
 import AddToCart from './AddToCart';
-// import StarsCantChanged from './StarsCantChanged'
 import Stars from './Stars';
 import ReviewCard from './ReviewCard';
 
 const ProductDetails = () => {
-    // const cartItems = useSelector(state => state.CartSlice.cartItems)
     const [product, setProduct] = useState([])
     const [formData, setFormData] = useState({
         name: "",
@@ -18,8 +14,6 @@ const ProductDetails = () => {
         userRating: 0
     })
     const [handleReview, setHandleReview] = useState([])
-    // const [availableInCart, setAvailableInCart] = useState(false)
-    // const [, forceUpdate] = useReducer(x=>x+1,0)
     const { id } = useParams()
     const arr = Object.values(data)
 
@@ -27,7 +21,6 @@ const ProductDetails = () => {
         let prod = arr.find(item => item.id === Number(id))
         setProduct(prod)
         setHandleReview(prod.reviews)
-        // available()
     }, [])
 
     const handleStarClickedValue = (num)=> setFormData(prev => ({
@@ -35,8 +28,11 @@ const ProductDetails = () => {
         userRating: num
     }))
 
+    const resetClickedRef = useRef(false)
+
     const handleSubmit = (e) => {
         e.preventDefault()
+        resetClickedRef.current = true
         if(formData.name!=='' && formData.text!=='') {
             setHandleReview(prev=> ([
                 ...prev,
@@ -48,17 +44,8 @@ const ProductDetails = () => {
                 userRating: 0
             })
         }
+        setTimeout(()=> resetClickedRef.current = false, 100)
     }
-
-    // const available = () => {
-    //     const isAvailable = cartItems.find(item => item.id === Number(id))
-    //     isAvailable && setAvailableInCart(isAvailable)
-    //     // console.log('av',isAvailable)
-    // }
-
-    // useEffect(() => {
-    //     console.log(product.rating)
-    // }, [product])
 
     return (
         <div className='ProductDetails'>
@@ -79,7 +66,6 @@ const ProductDetails = () => {
                     <h2>{product.name}</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet non excepturi aut maxime nisi id nulla enim voluptatum cumque iusto, minima nobis dolorem quibusdam laboriosam quod quos pariatur. Dolorum architecto quis asperiores corporis minus, earum ab ut eveniet sunt commodi accusantium voluptatem iusto pariatur placeat assumenda maiores</p>
                     <h2>${product.price}</h2>
-                    {/* <AddRemove item={product} /> */}
                     <div className="cartDiv" >
                         {
                             <AddToCart id={product.id} name={product.name} brand={product.brand} gender={product.gender} price={product.price} imageURL={product.imageURL} quantity={1} />
@@ -118,7 +104,7 @@ const ProductDetails = () => {
                         text: e.target.value
                     }))} />
                     <p>Rating <span>*</span>:</p>
-                    <Stars handleStarClickedValue={handleStarClickedValue} />
+                    <Stars handleStarClickedValue={handleStarClickedValue} resetClicked={resetClickedRef.current} />
                     <button onClick={handleSubmit}>Submit</button>
                 </form>
             </div>

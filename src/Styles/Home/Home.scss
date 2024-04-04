@@ -3,14 +3,9 @@
     padding-inline: 50px;
 }
 .gallery-section {
-    // padding: 50px 50px 0 50px;
-    // padding-left: 50px;
-    // div {
     display: flex;
-    // align-items: ;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    // }
     @media screen and (min-width: 759px) {
         padding-inline: 50px;
     }
@@ -35,12 +30,4 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     min-height: 100px;
-    // border: 1px solid red;
 }
-
-
-// >video {
-//     width: 100vw;
-// }
-
-

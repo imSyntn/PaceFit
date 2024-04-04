@@ -3,7 +3,6 @@ import '../../Styles/Home/ContentCard.scss'
 import { Link } from 'react-router-dom'
 
 const ContentCard = ({ item }) => {
-// console.log(item)
   return (
     <Link to={`/ProductDetails/${item.id}`} className='ContentCard'>
       <img src={item.imageURL} alt="" />

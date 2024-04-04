@@ -1,6 +1,5 @@
 .Content {
     margin-bottom: 100px;
-    // border: 1px solid red;
 
     >h1 {
         margin-block: 15px;
@@ -8,19 +7,15 @@
 
     .over {
         position: relative;
-        // border: 1px solid red;
         >.left,
         .right {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            // height: 100px;
             width: 40px;
             border: none;
             background: none;
             cursor: pointer;
-            // border: 1px solid rgb(179, 179, 179);
-            // background: rgb(227, 227, 227);
             >svg {
                 font-size: 40px;
                 transition: none !important;
@@ -40,7 +35,6 @@
         >.swipeCont {
             display: flex;
             width: 100%;
-            // border: 1px solid red;
             scroll-behavior: smooth;
             overflow-x: auto;
         }

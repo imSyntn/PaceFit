@@ -19,13 +19,6 @@ const Header = () => {
     })
 
     const location = useLocation()
-    // const [showSearchInput, setShowSearchInput] = useState(false)
-    // const [changeComponent, setChangeComponent] = useState({
-    //     men: true,
-    //     women: false,
-    //     kids: false,
-    // })
-    // console.log(showAccordian)
 
     useEffect(() => {
         const handleResize = () => {

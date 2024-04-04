@@ -5,19 +5,19 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    alert('Thanks')
   }
 
   return (
     <div className='Contact'>
-      {/* <video src="Hero-Section-Video.mp4" autoPlay={true} loop muted></video> */}
-      <h1>Contact Us</h1>
       <form action="" onSubmit={handleSubmit}>
-        <p>Name</p>
-        <input type='text' />
-        <p>Email</p>
-        <input type="email" />
-        <p>Details</p>
-        <textarea />
+      <h1>Contact Us</h1>
+        <label htmlFor="name">Name</label>
+        <input placeholder='Enter your name' type='text'  name="name" />
+        <label htmlFor="email">Email</label>
+        <input placeholder='Enter your email' type="email" name="email" />
+        <label htmlFor="details">Details</label>
+        <textarea placeholder='Enter details' name="details" />
         <button>Send Message</button>
       </form>
     </div>

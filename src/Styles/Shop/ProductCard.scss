@@ -5,14 +5,10 @@
     }
     .ProductCard {
         width: 328px;
-        // height: fit-content;
         overflow: hidden;
         border-radius: 5px;
-        // position: relative;
         text-decoration: none;
-        // border: 1px solid red;
         &:hover {
-            // transform: scale(1.03);
             >.addToCart {
                 opacity: 1;
             }

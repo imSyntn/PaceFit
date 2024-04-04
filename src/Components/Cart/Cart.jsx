@@ -1,14 +1,11 @@
 import React from 'react'
 import '../../Styles/Cart/Cart.scss'
-// import img from '../../Assets/Men-Nike.jpg'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import AddRemove from './AddRemove'
-// import { add, remove } from '../../Redux/slices/CartSlice'
 
 const Cart = () => {
 
   const cartItems = useSelector(state => state.CartSlice.cartItems)
-  // const dispatch = useDispatch()
 
   return (
     <div className='Cart'>

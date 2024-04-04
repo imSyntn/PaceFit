@@ -5,12 +5,7 @@ import { add, remove } from '../../Redux/slices/CartSlice'
 import { FaPlus, FaMinus } from "react-icons/fa6";
 
 const AddRemove = ({ item }) => {
-    // const cartItems = useSelector(state => state.CartSlice.cartItems)
     const dispatch = useDispatch()
-    // useEffect(()=>{
-    //     let number = 
-    //     console.log('num',number)
-    // },[])
     return (
         <div className="quantity">
             <button onClick={() => dispatch(add({

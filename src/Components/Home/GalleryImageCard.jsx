@@ -8,7 +8,6 @@ const GalleryImageCard = ({item}) => {
     <div className='GalleryImageCard'>
         <img src={img} alt="gallery-img" />
         <div className="text">
-            {/* <p>Shoes for Everyday Comfort</p> */}
             <h2>{item.type} for {item.gender}</h2>
         </div>
     </div>

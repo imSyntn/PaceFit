@@ -1,15 +1,6 @@
 import React, { useState } from 'react'
 import '../../Styles/Home/Home.scss'
 import GalleryImageCard from './GalleryImageCard';
-// import vid from '../Assets/y2mate.com - Shoes by 2GO  Theatrical Ad Film  Commercial_1080p.mp4'
-
-
-import one from '../../Assets/Hero Section/1.png'
-import two from '../../Assets/Hero Section/2.png'
-import three from '../../Assets/Hero Section/3.png'
-import four from '../../Assets/Hero Section/4.png'
-import five from '../../Assets/Hero Section/5.png'
-
 
 import HeroSection from './HeroSection';
 import ContentSection from './ContentSection';
@@ -25,20 +16,8 @@ import Data from '../../FakeData.json'
 
 const Home = () => {
 
-    const images = [one, two, three, four, five]
-
     const arr = Object.values(Data)
 
-    // const [currentImage, setCurrentImage] = useState(0);
-    let xIndex = 10;
-    // setTimeout(()=>{
-    //     let nextImg = currentImage+1;
-    //     (nextImg>4)?(
-    //         setCurrentImage(0)
-    //     ):(
-    //         setCurrentImage(nextImg)
-    //     )
-    // },1000)
     const userRemarks = [
         { name: 'JENNIFER LEWIS', desc: 'Fast shipping and excellent customer service. The product was even better than expected. I will definitely be a returning customer.', img: casualImg },
         { name: 'JENNIFER LEWIS', desc: 'Fast shipping and excellent customer service. The product was even better than expected. I will definitely be a returning customer.', img: casualImg },
@@ -58,21 +37,18 @@ const Home = () => {
 
     return (
         <>
-            <HeroSection images={images} />
-            {/* <TrendingLatest /> */}
+            <HeroSection />
             <div className="Trending-Latest">
                 <ContentSection heading={"TRENDING"} arr={arr} id={1} />
                 <ContentSection heading={"LATEST"} arr={arr} id={2} />
             </div>
             <h1 className='aft'>COLLECTIONS</h1>
             <div className="gallery-section">
-                {/* <div> */}
                 {
                     galleryCardText.map((item, index) => (
                         <GalleryImageCard key={index} item={item} />
                     ))
                 }
-                {/* </div> */}
             </div>
             <h1 className='aft'>REMARKS</h1>
             <div className="remarks">
@@ -90,8 +66,6 @@ const Home = () => {
                     ))
                 }
             </div>
-            {/* <video src={vid} muted loop></video> */}
-
         </>
     )
 }

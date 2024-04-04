@@ -1,9 +1,11 @@
 import React from 'react'
 import '../../Styles/Home/HeroSection.scss'
+import { Link } from 'react-router-dom';
 import { FaShoppingBag } from "react-icons/fa";
 import { BsPercent } from "react-icons/bs";
+import one from '../../Assets/Hero Section/1.png'
 
-const HeroSection = ({ images, currentImage }) => {
+const HeroSection = () => {
     return (
         <div className="Hero-section">
             <div className="stoked-text">
@@ -11,15 +13,7 @@ const HeroSection = ({ images, currentImage }) => {
                 <h1>NIKE</h1>
             </div>
             <div className="hero-image-section">
-                <img src={images[0]} alt="Product Image" className="hero-image-1" />
-                {/* <div className="scroller">
-                        {
-                            images.map((item) => (
-                                <img src={item} style={{zIndex: 1}} alt="Product Image" className="hero-image-1" />
-                                // <div className="imgDiv"></div>
-                            ))
-                        }
-                    </div> */}
+                <img src={one} alt="Product Image" className="hero-image-1" />
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" className="svg" width="160" height="120">
                 <path d="M50 100 Q100 10 130 110" fill="none" stroke="rgb(0, 0, 0)" strokeWidth="2" markerEnd="url(#arrowhead)" strokeDasharray="5,5" />
@@ -40,7 +34,7 @@ const HeroSection = ({ images, currentImage }) => {
                     <h1>NIKE <span>2024</span><span>COLLECTIONS</span></h1>
                 </div>
                 <div className="btns">
-                    <button className='sho-now'>Shop Now</button>
+                    <button className='sho-now'><Link to='/shop'>Shop Now</Link></button>
                     <button className="add-to-bag">Add to Bag <FaShoppingBag /></button>
                 </div>
             </div>

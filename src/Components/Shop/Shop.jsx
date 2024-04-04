@@ -4,7 +4,6 @@ import { FaBars } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
 import Data from '../../FakeData.json';
 import ProductCard from './ProductCard';
-// import CheckboxText from './CheckboxText';
 
 const Shop = () => {
   const [open, setOpen] = useState(false)
@@ -14,10 +13,6 @@ const Shop = () => {
   })
   const [input, setInput] = useState('')
   const [searched, setSearched] = useState(false)
-
-  // useEffect(()=>{
-  //   console.log(input)
-  // },[input])
 
   const [currentFilters, setCurrentFilters] = useState({
     categories: '',
@@ -41,11 +36,8 @@ const Shop = () => {
     setSearched(true)
     const newData = defaultSorting.filter((item) => {
       let brandSearch = item.brand.toLowerCase().includes(input.toLowerCase())
-      // if(brandSearch) {brandSearch = true;}
       let catagorySearch = item.category.toLowerCase().includes(input.toLowerCase())
-      // if(catagorySearch.length == 0) {catagorySearch = true;}
       let nameSearch = item.name.toLowerCase().includes(input.toLowerCase())
-      // if(nameSearch.length == 0) {nameSearch = true;}
       return brandSearch || catagorySearch || nameSearch
     })
     defaultCatagoryResult.current = [...newData]
@@ -55,10 +47,6 @@ const Shop = () => {
     }))
   }
 
-  // useEffect(() => {
-  //   console.log(data)
-  // }, [data])
-
   const sorting = (value) => {
     if (data.filterd.length == 0) {
       sortingFunc(value, 'raw')
@@ -67,20 +55,17 @@ const Shop = () => {
 
   const sortingFunc = (value, name) => {
     if (value === 'default') {
-      // console.log(defaultCatagoryResult.current)
       setData(prev => ({
         ...prev,
         [name]: (name === 'raw') ? defaultSorting : defaultCatagoryResult.current
       }))
     } else if (value === 'popularity') {
-      // console.log(defaultCatagoryResult.current)
       const sorted = data[name].sort((a, b) => a.popularity - b.popularity)
       setData(prev => ({
         ...prev,
         [name]: sorted
       }))
     } else if (value === 'rating') {
-      // console.log(name)
       const sorted = data[name].sort((a, b) => a.rating - b.rating)
       setData(prev => ({
         ...prev,
@@ -119,8 +104,6 @@ const Shop = () => {
   useEffect(() => {
     if (currentFilters.categories != '' || currentFilters.gender != '' || currentFilters.price.start != false || currentFilters.price.start != false) {
       let filteredVal = filterReq(currentFilters.categories, currentFilters.gender, currentFilters.price)
-      // console.log(defaultCatagoryResult.current)
-      // console.log('ref',defaultCatagoryResult.current)
       if (filteredVal.length === 0) {
         filteredVal = [{ noData: true }]
         setData(prev => ({ ...prev, filterd: filteredVal }))
@@ -178,20 +161,15 @@ const Shop = () => {
           <h2>Gender</h2>
           {
             gender.map((item, index) => (
-              // <CheckboxText key={index} text={item} />
               <p key={item} style={(currentFilters.gender == item) ? selectedStyle : {}} onClick={() => setCurrentFilters(prev => ({ ...prev, gender: item }))}>{item}</p>
             ))
           }
           <h2>Price</h2>
           {
             price.map((item, index) => (
-              // <CheckboxText key={index} text={item} />
               <p key={index} style={(currentFilters.price.end == item.end) ? selectedStyle : {}} onClick={() => setCurrentFilters(prev => ({ ...prev, price: { start: item.start, end: item.end } }))}>{item.start} - {item.end}</p>
             ))
           }
-          {/* <h2>Sale</h2>
-          <p onClick={() => setCurrentFilters(prev => ({...prev, sale: true}))}>Sale</p> */}
-
         </div>
         <div className="products" key="products">
           {

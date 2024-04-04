@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react'
 import '../../Styles/Shop/ProductCard.scss'
-// import { add } from '../../Redux/slices/CartSlice'
 import AddToCart from './AddToCart';
 import { Link } from 'react-router-dom';
-// import StarsCanChange from './StarsCanChange'
 import Stars from './Stars';
 
 const ProductCard = ({ item }) => {

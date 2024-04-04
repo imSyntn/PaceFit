@@ -2,11 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    // background: rgb(214, 214, 115);
-    // background-image: linear-gradient(0deg, #434343 0%, black 100%);
-    // background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);
-    background-image: linear-gradient(60deg, #abecd6 0%, #fbed96 100%);
-    // border: 1px solid red;
+    background: white;
     border-radius: 15px;
     width: 380px;
     padding: 20px;
@@ -40,7 +36,6 @@
     }
 
     >.inp {
-        // border: 2px solid red;
         height: 40px;
         padding-inline: 10px;
         display: flex;
@@ -50,7 +45,6 @@
         svg {
             font-size: 25px;
             fill: rgb(0, 0, 0);
-            // mix-blend-mode: difference;
 
         }
         >.mail {
@@ -102,11 +96,3 @@
         cursor: pointer;
     }
 }
-// @keyframes animate {
-//     50% {
-//         left: 50%;
-//     }
-//     100% {
-//         left: 0;
-//     }
-// }

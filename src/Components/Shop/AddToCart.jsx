@@ -8,7 +8,6 @@ const AddToCart = ({ id, name, brand, gender, price, imageURL, quantity = 1 }) =
 
     const cartItems = useSelector(state => state.CartSlice.cartItems)
 
-    // console.log(cartItems)
     const [added, setAdded] = useState(false)
     const dispatch = useDispatch()
 

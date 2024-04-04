@@ -5,7 +5,6 @@ import Header from './Components/Header'
 import Footer from './Components/Footer'
 import Fallback from './Components/Fallback'
 
-// const MenComponent = lazy(()=> import('./Components/Men'))\
 const Home = lazy(() => import('./Components/Home/Home'))
 const About = lazy(() => import('./Components/About/About'))
 const Shop = lazy(() => import('./Components/Shop/Shop'))
@@ -19,7 +18,6 @@ const NotAvailable = lazy(()=> import('./Components/NotAvailable'))
 
 const App = () => {
 
-  // const cartItems = useSelector(state=> state.)
 
   return (
     <BrowserRouter>

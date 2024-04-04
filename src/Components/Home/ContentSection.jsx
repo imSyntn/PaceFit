@@ -5,12 +5,6 @@ import { FaAngleLeft } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa6";
 
 const ContentSection = ({ heading, id, arr }) => {
-    // const [items, setItems] = useState(false)
-
-    // useEffect(() => {
-    //     // Math.ceil()
-    //     setItems(Math.floor((window.innerWidth - 100) / 280))
-    // }, [])
 
     const slideLeft = () => {
         document.querySelector(`.swipe${id}`).scrollLeft += 200;

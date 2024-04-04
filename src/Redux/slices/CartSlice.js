@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { json } from "react-router-dom";
 
 const initialState = {
     cartItems: (localStorage.getItem('cart-items'))? JSON.parse(localStorage.getItem('cart-items')) : []

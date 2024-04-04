@@ -1,6 +1,5 @@
 .Shop {
     min-height: calc(100vh - 70px);
-    // background: rgb(72, 222, 102);
     padding-top: 60px;
     margin-bottom: 50px;
     padding-inline: 60px;
@@ -76,14 +75,9 @@
     >.shopContainer {
         width: 100%;
         display: flex;
-
-        // border: 1px solid red;
         >.filterDiv {
             width: 0px;
-            // height: 76vh;
             overflow: hidden;
-            // border: 1px solid rgb(0, 255, 13);
-            // background: rgb(239, 239, 239);
             transition: all 0.3s;
             >.clearFilters {
                 float: right;
@@ -113,7 +107,6 @@
 
         >.products {
             width: 100%;
-            // border: 1px solid rgb(0, 51, 255);
             display: grid;
             gap: 20px;
             grid-template-columns: repeat(auto-fit, min(328px));
@@ -136,7 +129,6 @@
     .Shop {
         .searchDiv {
             position: relative;
-            // border: 1px solid green;
             height: 93px;
             align-items: end;
             .inpBtn {
@@ -154,11 +146,9 @@
 @media screen and (max-width: 560px) {
     .Shop {
         .shopContainer {
-            // flex-wrap: wrap;
             .filterDiv {
                 position: absolute;
                 z-index: 5;
-                // background: rgba(255, 255, 255, 0.767);
                 backdrop-filter: blur(15px);
             }
         }
