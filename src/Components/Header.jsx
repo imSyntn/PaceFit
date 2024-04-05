@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import '../Styles/Header.scss'
 import { Link, useLocation } from 'react-router-dom'
 import { FaShoppingBag, FaUser } from "react-icons/fa";
-import { FaBars } from "react-icons/fa6";
 import { useSelector } from 'react-redux';
 import Logo from '../Assets/PaceFit Logo.png'
 
@@ -153,7 +152,11 @@ const Header = () => {
                     })}><FaUser style={active.user ? { fill: '#ff9205' } : ''} /></Link>
                 </div>
 
-                <FaBars className='bar' onClick={()=> setShowAccordian(prev => !prev)} />
+                <div className="bars" onClick={() => setShowAccordian(prev => !prev)} >
+                    <div className={`bar ${showAccordian ? 'rotate1' : ''}`}></div>
+                    <div className='bar' style={showAccordian ? {opacity: 0} : {}}></div>
+                    <div className={`bar ${showAccordian ? 'rotate2' : ''}`}></div>
+                </div>
             </header>
         </>
     )
