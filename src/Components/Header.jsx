@@ -8,6 +8,8 @@ import Logo from '../Assets/PaceFit Logo.png'
 const Header = () => {
     const [showAccordian, setShowAccordian] = useState(false)
     const cartItems = useSelector(state => state.CartSlice.cartItems)
+    const user = useSelector(state=> state.userSlice)
+
     const [active, setActive] = useState({
         home: true,
         about: false,
@@ -97,7 +99,7 @@ const Header = () => {
                 <img src={Logo} alt="logo" />
 
                 <div className={`routes ${showAccordian ? 'visible' : ''}`}>
-                    <Link to='/' className={active.home && 'active'} onClick={() => setActive({
+                    <Link to='/' className={active.home ? 'active' : ''} onClick={() => setActive({
                         home: true,
                         about: false,
                         shop: false,
@@ -105,7 +107,7 @@ const Header = () => {
                         cart: false,
                         user: false
                     })}>HOME</Link>
-                    <Link to='/about' className={active.about && 'active'} onClick={() => setActive({
+                    <Link to='/about' className={active.about ?'active' : ''} onClick={() => setActive({
                         home: false,
                         about: true,
                         shop: false,
@@ -113,7 +115,7 @@ const Header = () => {
                         cart: false,
                         user: false
                     })}>ABOUT</Link>
-                    <Link to='/shop' className={active.shop && 'active'} onClick={() => setActive({
+                    <Link to='/shop' className={active.shop ? 'active' : ''} onClick={() => setActive({
                         home: false,
                         about: false,
                         shop: true,
@@ -121,7 +123,7 @@ const Header = () => {
                         cart: false,
                         user: false
                     })} >SHOP</Link>
-                    <Link to='/contact' className={active.contact && 'active'} onClick={() => setActive({
+                    <Link to='/contact' className={active.contact ? 'active' : ''} onClick={() => setActive({
                         home: false,
                         about: false,
                         shop: false,
@@ -155,7 +157,7 @@ const Header = () => {
                 <div className="bars" onClick={() => setShowAccordian(prev => !prev)} >
                     <div className={`bar ${showAccordian ? 'rotate1' : ''}`}></div>
                     <div className='bar' style={showAccordian ? {opacity: 0} : {}}></div>
-                    <div className={`bar ${showAccordian ? 'rotate2' : ''}`}></div>
+                    <div className={`bar ${showAccordian ? 'rotate2' : ' '}`}></div>
                 </div>
             </header>
         </>

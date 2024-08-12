@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: white;
+    background: #F1F7FE;
     border-radius: 15px;
     width: 380px;
     padding: 20px;
@@ -11,28 +11,28 @@
     z-index: 5;
     overflow: hidden;
 
-    &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 30%;
-        height: 100%;
-        width: 100%;
-        z-index: -1;
-        transform: skewX(50deg);
-        background-image: linear-gradient(to right, #434343 0%, black 100%);
-    }
+    // &::after {
+    //     content: '';
+    //     position: absolute;
+    //     top: 0;
+    //     left: 30%;
+    //     height: 100%;
+    //     width: 100%;
+    //     z-index: -1;
+    //     transform: skewX(50deg);
+    //     background-image: linear-gradient(to right, #434343 0%, black 100%);
+    // }
 
     >h1 {
-        color: white;
-        mix-blend-mode: difference;
+        color: rgb(0, 0, 0);
+        // mix-blend-mode: difference;
     }
 
     >label {
         font-size: 18px;
         padding-left: 10px;
-        color: white;
-        mix-blend-mode: difference;
+        color: rgb(0, 0, 0);
+        // mix-blend-mode: difference;
     }
 
     >.inp {
@@ -47,8 +47,9 @@
             fill: rgb(0, 0, 0);
 
         }
+
         >.mail {
-            fill: white;
+            fill: rgb(0, 0, 0);
         }
 
         >input {
@@ -58,29 +59,35 @@
             background: none;
             padding-left: 15px;
             font-size: 17px;
-            color: white;
-            mix-blend-mode: difference;
+            color: rgb(0, 0, 0);
+            // mix-blend-mode: difference;
 
             &:focus {
                 outline: none;
             }
 
             &::placeholder {
-            color: white;
+                color: rgb(0, 0, 0);
             }
         }
 
         >.eye {
             cursor: pointer;
+
             >svg {
-                fill: white;
+                fill: rgb(0, 0, 0);
             }
         }
     }
 
     >a {
-        color: white;
-        mix-blend-mode: difference;
+        color: rgb(0, 0, 0);
+        // mix-blend-mode: difference;
+    }
+
+    p {
+        width: 100%;
+        text-align: center;
     }
 
     >button {
@@ -94,5 +101,10 @@
         background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         mix-blend-mode: difference;
         cursor: pointer;
+    }
+
+    em {
+        color: red;
+        font-size: 16px;
     }
 }
