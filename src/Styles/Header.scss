@@ -69,15 +69,22 @@ header {
             position: absolute;
             top: 100%;
             left: 100%;
-            width: 100%;
+            width: 200px;
+            // height: ;
+            display: flex;
+            flex-direction: column;
+            // border: 1px solid red;
             padding-inline: calc(100vw / 19);
-            background: rgba(255, 255, 255, 0.566);
+            background: rgb(255, 255, 255);
             backdrop-filter: blur(25px);
             transition: all 0.3s;
+            a {
+                margin-block: 10px;
+            }
         }
         .visible {
             top: 100%;
-            left: 0;
+            left: calc(100% - 200px);
         }
         .bars {
             display: block;

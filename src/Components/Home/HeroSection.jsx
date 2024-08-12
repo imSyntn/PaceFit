@@ -35,7 +35,7 @@ const HeroSection = () => {
                 </div>
                 <div className="btns">
                     <button className='sho-now'><Link to='/shop'>Shop Now</Link></button>
-                    <button className="add-to-bag">Add to Bag <FaShoppingBag /></button>
+                    <button className="add-to-bag"><Link to='/cart'>Go to Cart </Link><FaShoppingBag /></button>
                 </div>
             </div>
         </div>

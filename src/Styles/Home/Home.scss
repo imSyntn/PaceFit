@@ -31,3 +31,9 @@
     justify-content: space-evenly;
     min-height: 100px;
 }
+
+@media screen and (max-width: 500px) {
+    .Trending-Latest {
+        padding-inline: 10px;
+    }
+}

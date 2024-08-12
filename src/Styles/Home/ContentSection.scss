@@ -7,18 +7,25 @@
 
     .over {
         position: relative;
+
         >.left,
         .right {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             width: 40px;
+            height: 50px;
+            background: rgb(212, 212, 212);
             border: none;
-            background: none;
+            border-radius: 10px;
+            // background: none;
+            z-index: 5;
             cursor: pointer;
+
             >svg {
                 font-size: 40px;
                 transition: none !important;
+
                 &:hover {
                     fill: #ffbf26;
                 }
@@ -32,6 +39,7 @@
         >.right {
             right: -40px;
         }
+
         >.swipeCont {
             display: flex;
             width: 100%;
@@ -40,7 +48,20 @@
         }
     }
 
-    
+    @media screen and (max-width: 500px) {
+        .over {
+
+            >.left {
+                left: 0px;
+            }
+
+            >.right {
+                right: 0px;
+            }
+        }
+    }
+
+
 
     // .swipe {
     // cursor: grab;
