@@ -79,6 +79,7 @@ const LoginSignup = () => {
                         displayName: data.user.displayName,
                         photoURL: data.user.photoURL
                     }))
+                    // localStorage.setItem('uid', data.user.uid)
                 })
                 .catch(e => console.log(e))
         }

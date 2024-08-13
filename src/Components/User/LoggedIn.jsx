@@ -23,6 +23,7 @@ const LoggedIn = ({ user }) => {
       .then(() => {
         dispatch(logout())
       })
+      // localStorage.re
   }
 
   const imgUploaded = (e) => {
