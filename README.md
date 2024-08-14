@@ -15,9 +15,10 @@ PaceFit is a modern e-commerce application developed with ReactJS and Redux, des
 ## Technologies Used
 
 - ReactJS
-- Redux
+- Redux Toolkit
 - JavaScript
 - Sass
+- Firebase
 
 ## Getting Started
 

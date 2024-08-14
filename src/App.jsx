@@ -18,6 +18,7 @@ const Contact = lazy(() => import('./Components/Contact/Contact'))
 const Cart = lazy(() => import('./Components/Cart/Cart'))
 const User = lazy(() => import('./Components/User/User'))
 const ProductDetails = lazy(() => import('./Components/Shop/ProductDetails'))
+const Payment = lazy(()=> import('./Components/Payment/Payment'))
 const NotAvailable = lazy(() => import('./Components/NotAvailable'))
 
 
@@ -33,8 +34,8 @@ const App = () => {
     if (userDetails.uid) {
       const setData = async () => {
 
-        console.log('setData called.')
-        console.log('userId', userDetails.uid)
+        // console.log('setData called.')
+        // console.log('userId', userDetails.uid)
 
         try {
           const userDoc = doc(db, 'CartedItems', userDetails.uid)
@@ -53,14 +54,16 @@ const App = () => {
 
   useEffect(() => {
     if (userDetails.uid) {
-      console.log('get Data Called')
+      // console.log('get Data Called')
       const getData = async () => {
         try {
           const querry = await getDoc(doc(db, 'CartedItems', userDetails.uid))
           if(querry.exists()) {
-            console.log('get data', querry.data().carted)
+            // console.log('get data', querry.data().carted)
             querry.data().carted.forEach((item)=> {
-              dispatch(add(item))
+              if(!cartItems.some(item => item.id === item.id)){
+                dispatch(add(item))
+              }
             })
           }
         } catch (error) {
@@ -71,7 +74,11 @@ const App = () => {
       getData()
     }
   }, [userDetails])
-
+  
+  // useEffect(()=> {
+  //   console.log(cartItems)
+  //   console.log(1)
+  // },[cartItems])
 
   return (
     <BrowserRouter>
@@ -84,6 +91,7 @@ const App = () => {
         <Route path='/user' element={<Suspense fallback={<Fallback />}><User /></Suspense>} />
         <Route path='/cart' element={<Suspense fallback={<Fallback />}><Cart /></Suspense>} />
         <Route path='/ProductDetails/:id' element={<Suspense fallback={<Fallback />}><ProductDetails /></Suspense>} />
+        <Route path='/payment' element={<Suspense fallback={<Fallback />}><Payment /></Suspense>} />
         <Route path='*' element={<Suspense fallback={<Fallback />}><NotAvailable /></Suspense>} />
       </Routes>
       <Footer />

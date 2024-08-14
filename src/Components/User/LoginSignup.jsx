@@ -32,7 +32,7 @@ const LoginSignup = ({ loader, setLoader }) => {
         setLoader(true);
         setFetchError('')
         if (details.email.length > 0 && details.password.length > 5 && details.email.includes('@')) {
-            console.log('ok')
+            // console.log('ok')
             setError({
                 email: '',
                 password: ''
@@ -41,7 +41,7 @@ const LoginSignup = ({ loader, setLoader }) => {
             return true
         } else {
             setLoader(false)
-            console.log('not ok')
+            // console.log('not ok')
             setError({
                 password: 'Password Required.',
                 email: 'Email Required.'
@@ -71,18 +71,18 @@ const LoginSignup = ({ loader, setLoader }) => {
     }
 
     const showError = (e) => {
-        console.log(e.message)
+        // console.log(e.message)
         const str = e.message
         setFetchError(str.slice(str.indexOf('/') + 1, str.indexOf(')')).split('-').join(' '))
     }
 
     const signUpUser = () => {
-        console.log('signUp')
+        // console.log('signUp')
         const validate = validation()
         if (validate) {
             createUserWithEmailAndPassword(auth, details.email, details.password)
                 .then(data => {
-                    console.log(data)
+                    // console.log(data)
                     dispatch(logIn({
                         email: data.user.email,
                         uid: data.user.uid,
@@ -98,12 +98,12 @@ const LoginSignup = ({ loader, setLoader }) => {
         }
     }
     const logInUser = () => {
-        console.log('login')
+        // console.log('login')
         const validate = validation()
         if (validate) {
             signInWithEmailAndPassword(auth, details.email, details.password)
                 .then(data => {
-                    console.log(data)
+                    // console.log(data)
                     setLoader(false)
                     dispatch(logIn({
                         email: data.user.email,
@@ -119,9 +119,9 @@ const LoginSignup = ({ loader, setLoader }) => {
         }
     }
 
-    useEffect(() => {
-        console.log(details)
-    }, [details])
+    // useEffect(() => {
+    //     console.log(details)
+    // }, [details])
 
     useEffect(() => {
         console.log(user)

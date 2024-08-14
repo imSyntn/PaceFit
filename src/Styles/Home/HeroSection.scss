@@ -2,7 +2,7 @@
     height: 100vh;
     width: 100%;
     position: relative;
-    
+
     padding-top: 60px;
 
     >.stoked-text {
@@ -29,133 +29,105 @@
     >.hero-image-section {
         z-index: 3;
         position: absolute;
-        
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        animation: updown infinite 2s linear;
-        display: flex;
+        animation: updown infinite 3s linear;
+        // border: 1px solid red;
+
         @keyframes updown {
             0% {
                 top: 50%
             }
-        
+
             25% {
-                top: 49.5%
+                top: 48%
             }
-        
+
             50% {
                 top: 50%;
             }
-        
+
             75% {
-                top: 51.5%;
+                top: 52%;
             }
-        
+
             100% {
                 top: 50%
             }
         }
-        
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         >img {
-            
+
             width: 40vw;
             aspect-ratio: 40 / 30.3;
             filter: drop-shadow(0px 25px 50px rgb(0, 0, 0));
-            
             transition: all 0.3s;
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
         }
 
-        
-    }
+        >.arrow-discount {
+            position: absolute;
+            top: -100px;
+            right: -100px;
 
-    .svg {
-        position: absolute;
-        left: 65%;
-        top: 9%;
-        fill: rgba(255, 255, 255, 0.546);
-        transform: translate(-65%, -9%);
-        
-    }
-
-    >.hero-discount {
-        z-index: 4;
-        position: absolute;
-        top: 25%;
-        left: 75%;
-        transform: translate(-75%, -25%);
-        height: 50px;
-        width: 180px;
-        background-color: rgba(107, 107, 107, 0.45);
-        border-radius: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-
-        
-        >.percent {
-            border: 1px solid white;
-            background: white;
-            height: 30px;
-            width: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
+            // border: 1px solid blue;
             >svg {
-                font-size: 20px;
-                fill: black;
+                transform: scale(1.2);
+                position: relative;
+                left: -40px;
+
+                // fill: rgba(255, 255, 255, 0.546);
+                // transform: translate(-65%, -9%);
+            }
+
+            >.hero-discount {
+                z-index: 4;
+                // position: absolute;
+                // top: 25%;
+                // left: 75%;
+                // transform: translate(-75%, -25%);
+                height: 50px;
+                width: 180px;
+                background-color: rgba(107, 107, 107, 0.45);
+                border-radius: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+
+                >.percent {
+                    border: 1px solid white;
+                    background: white;
+                    height: 30px;
+                    width: 30px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    >svg {
+                        font-size: 20px;
+                        fill: black;
+                    }
+                }
+
+                >p {
+                    color: rgb(0, 0, 0);
+                    font-weight: 500;
+                }
             }
         }
-
-        >p {
-
-            font-weight: 500;
-        }
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    // .svg {
+    //     position: absolute;
+    //     left: 65%;
+    //     top: 9%;
+    //     fill: rgba(255, 255, 255, 0.546);
+    //     transform: translate(-65%, -9%);
+
+    // }
+
+
 
     >.hero-image-details {
         position: absolute;
@@ -171,7 +143,7 @@
             border: none;
             border-radius: 20px;
             background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
-            
+
             width: 150px;
             height: 30px;
             display: flex;
@@ -225,19 +197,20 @@
                 font-size: 1rem;
                 border-radius: 10px;
                 cursor: pointer;
-                    a {
-                        text-decoration: none;
-                    }
+
+                a {
+                    text-decoration: none;
+                }
 
                 &:nth-child(1) {
-                    
+
                     background-image: linear-gradient(to right, #f9d423 0%, #ff4e50 100%);
                     border: none;
                     font-weight: 700;
                     letter-spacing: 1px;
                     transition: all 0.2s;
 
-                    
+
                     &:hover {
                         a {
                             color: rgb(255, 255, 255);
@@ -261,8 +234,8 @@
                         content: "";
                         width: 150px;
                         height: 35px;
-                        
-                        
+
+
                         background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
                         position: absolute;
                         left: -102%;
@@ -276,6 +249,7 @@
 
                     &:hover {
                         border-color: #2575fc;
+
                         a {
                             color: white;
                         }
@@ -310,6 +284,7 @@
                 font-size: 20vw;
             }
         }
+
         .hero-image-section {
             >img {
                 width: 50vw;
@@ -325,11 +300,25 @@
                 font-size: 30vw;
             }
         }
+
         .hero-image-section {
+            >.arrow-discount {
+                top: -150px;
+                right: -50px;
+
+                >svg {
+                    left: -100px;
+                    top: 40px;
+                    transform: rotate(-30deg);
+                }
+            }
+
             >img {
                 width: 70vw;
+                // border: 1px solid red;
             }
         }
+
         .hero-image-details {
             left: 10px;
         }
@@ -340,122 +329,91 @@
     .Hero-section {
         .hero-image-details {
             left: 15px;
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-    
-            
-            
-            
-            
-            
-            
-            
-    
+
             >.collections {
                 h1 {
                     font-size: 3rem;
-                    
+
                     span {
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-    
                         &:nth-child(2) {
-                            
-                            
                             font-size: 2.9rem;
-                            
-                            
                         }
                     }
                 }
             }
-    
-            
-            
-            
-    
-            
-            
-            
-    
-            
-            
-            
-    
-            
-            
-            
-            
-            
-            
-            
-    
-            
-            
-            
-            
-            
-    
-            
-            
-            
-            
-            
-            
-            
-            
-            
-    
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-    
-            
-            
-            
-    
-            
-            
-            
-    
-            
-            
-            
-    
-            
-            
-            
-            
-    
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         }
     }
 }

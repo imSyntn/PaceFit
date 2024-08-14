@@ -14,8 +14,24 @@ const HeroSection = () => {
             </div>
             <div className="hero-image-section">
                 <img src={one} alt="Product Image" className="hero-image-1" />
+                <div className="arrow-discount">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="svg" width="160" height="120">
+                        <path d="M50 100 Q100 10 130 110" fill="none" stroke="rgb(0, 0, 0)" strokeWidth="2" markerEnd="url(#arrowhead)" strokeDasharray="5,5" />
+                        <marker id="arrowhead" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto">
+                            <polygon points="0,0 5,2.5 0,5" fill="rgb(0, 0, 0)" />
+                        </marker>
+                    </svg>
+
+
+                    <div className="hero-discount">
+                        <div className="percent">
+                            <BsPercent />
+                        </div>
+                        <p>Get upto 30% off</p>
+                    </div>
+                </div>
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" className="svg" width="160" height="120">
+            {/* <svg xmlns="http://www.w3.org/2000/svg" className="svg" width="160" height="120">
                 <path d="M50 100 Q100 10 130 110" fill="none" stroke="rgb(0, 0, 0)" strokeWidth="2" markerEnd="url(#arrowhead)" strokeDasharray="5,5" />
                 <marker id="arrowhead" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto">
                     <polygon points="0,0 5,2.5 0,5" fill="rgb(0, 0, 0)" />
@@ -27,7 +43,7 @@ const HeroSection = () => {
                     <BsPercent />
                 </div>
                 <p>Get upto 30% off</p>
-            </div>
+            </div> */}
             <div className="hero-image-details">
                 <div className="featured"><p>FEATURED</p></div>
                 <div className="collections">
