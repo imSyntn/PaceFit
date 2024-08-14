@@ -9,7 +9,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } f
 import { logIn } from '../../Redux/slices/UserSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
-const LoginSignup = () => {
+const LoginSignup = ({ loader, setLoader }) => {
 
     const [login, setLogin] = useState(false)
     const [hide, setHide] = useState(true)
@@ -21,6 +21,7 @@ const LoginSignup = () => {
         email: '',
         password: ''
     })
+    const [fetchError, setFetchError] = useState('')
 
     const user = useSelector(state => state.userSlice)
     const dispatch = useDispatch()
@@ -28,6 +29,8 @@ const LoginSignup = () => {
     const auth = getAuth(app)
 
     const validation = () => {
+        setLoader(true);
+        setFetchError('')
         if (details.email.length > 0 && details.password.length > 5 && details.email.includes('@')) {
             console.log('ok')
             setError({
@@ -37,25 +40,26 @@ const LoginSignup = () => {
 
             return true
         } else {
+            setLoader(false)
             console.log('not ok')
             setError({
                 password: 'Password Required.',
                 email: 'Email Required.'
             })
-            if (details.email.length == 0 && details.password.length >5) {
+            if (details.email.length == 0 && details.password.length > 5) {
                 setError({
                     password: '',
                     email: 'Email Required.'
                 })
             }
-            if (details.email.length>0 && details.password.length <5) {
+            if (details.email.length > 0 && details.password.length < 5) {
                 setError({
                     email: '',
                     password: 'Minimum 6 characters.'
                 })
             }
-            if(details.email.length > 0 && details.password.length >5) {
-                if(!details.email.includes('@')) {
+            if (details.email.length > 0 && details.password.length > 5) {
+                if (!details.email.includes('@')) {
                     setError({
                         email: 'Invalid Email.',
                         password: ''
@@ -64,6 +68,12 @@ const LoginSignup = () => {
             }
             return false
         }
+    }
+
+    const showError = (e) => {
+        console.log(e.message)
+        const str = e.message
+        setFetchError(str.slice(str.indexOf('/') + 1, str.indexOf(')')).split('-').join(' '))
     }
 
     const signUpUser = () => {
@@ -81,7 +91,10 @@ const LoginSignup = () => {
                     }))
                     // localStorage.setItem('uid', data.user.uid)
                 })
-                .catch(e => console.log(e))
+                .catch(e => {
+                    showError(e)
+                })
+                .finally(() => setLoader(false))
         }
     }
     const logInUser = () => {
@@ -91,6 +104,7 @@ const LoginSignup = () => {
             signInWithEmailAndPassword(auth, details.email, details.password)
                 .then(data => {
                     console.log(data)
+                    setLoader(false)
                     dispatch(logIn({
                         email: data.user.email,
                         uid: data.user.uid,
@@ -98,7 +112,10 @@ const LoginSignup = () => {
                         photoURL: data.user.photoURL
                     }))
                 })
-                .catch(e => console.log(e))
+                .catch(e => {{
+                    showError(e)
+                }})
+                .finally(() => setLoader(false))
         }
     }
 
@@ -111,8 +128,11 @@ const LoginSignup = () => {
     }, [user])
 
     return (
-        <div className='LoginSignup'>
+        <div className='LoginSignup' style={loader ? { filter: 'blur(5px)' } : {}}>
             <h1>{login ? 'Login' : 'Signup'}</h1>
+            {
+                fetchError && <p className='fetchError'>{fetchError}</p>
+            }
             <label htmlFor="email">Email <em>{error.email && error.email}</em></label>
             <div className="inp">
                 <TfiEmail className='mail' />
@@ -122,7 +142,7 @@ const LoginSignup = () => {
             <div className="inp">
                 <TfiLock />
                 <input type={hide ? 'password' : 'text'} name="password" placeholder={login ? 'Enter your Password' : 'Create new Password'} onChange={(e) => setDetails(prev => ({ ...prev, password: e.target.value }))} />
-                <div className="eye" onMouseDown={() => setHide(false)} onMouseUp={() => setHide(true)}
+                <div className="eye" onMouseDown={() => setHide(prev=> !prev)}
                 >
                     {
                         hide ? (<FaRegEye />) : (<FaRegEyeSlash />)

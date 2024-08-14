@@ -4,11 +4,12 @@ import { Link, useLocation } from 'react-router-dom'
 import { FaShoppingBag, FaUser } from "react-icons/fa";
 import { useSelector } from 'react-redux';
 import Logo from '../Assets/PaceFit Logo.png'
+import img from '../Assets/profile.gif'
 
 const Header = () => {
     const [showAccordian, setShowAccordian] = useState(false)
     const cartItems = useSelector(state => state.CartSlice.cartItems)
-    const user = useSelector(state=> state.userSlice)
+    const user = useSelector(state => state.userSlice)
 
     const [active, setActive] = useState({
         home: true,
@@ -107,7 +108,7 @@ const Header = () => {
                         cart: false,
                         user: false
                     })}>HOME</Link>
-                    <Link to='/about' className={active.about ?'active' : ''} onClick={() => setActive({
+                    <Link to='/about' className={active.about ? 'active' : ''} onClick={() => setActive({
                         home: false,
                         about: true,
                         shop: false,
@@ -151,12 +152,16 @@ const Header = () => {
                         contact: false,
                         cart: false,
                         user: true
-                    })}><FaUser style={active.user ? { fill: '#ff9205' } : ''} /></Link>
+                    })}>{user.uid ? (
+                        <img src={img} alt="progile Image" />
+                    ) : (
+                        <FaUser style={active.user ? { fill: '#ff9205' } : ''} />
+                    )}</Link>
                 </div>
 
                 <div className="bars" onClick={() => setShowAccordian(prev => !prev)} >
                     <div className={`bar ${showAccordian ? 'rotate1' : ''}`}></div>
-                    <div className='bar' style={showAccordian ? {opacity: 0} : {}}></div>
+                    <div className='bar' style={showAccordian ? { opacity: 0 } : {}}></div>
                     <div className={`bar ${showAccordian ? 'rotate2' : ' '}`}></div>
                 </div>
             </header>

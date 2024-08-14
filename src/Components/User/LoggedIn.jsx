@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../../Styles/User/LoggedIn.scss'
-import img from '../../Assets/casual-man.jpg'
+import img from '../../Assets/profile.gif'
 import { app } from '../../../Firebase'
 import { updateProfile, signOut, getAuth, deleteUser } from 'firebase/auth'
 import { logout, updateProfileInRedux } from '../../Redux/slices/UserSlice'
@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux'
 
 const auth = getAuth(app)
 
-const LoggedIn = ({ user }) => {
+const LoggedIn = ({ user, loader, setLoader }) => {
 
   const [updates, setUpdates] = useState({
     photoURL: '',
@@ -35,6 +35,7 @@ const LoggedIn = ({ user }) => {
   }
 
   const updateUserDetails = () => {
+    setLoader(true)
     const currentUser = auth.currentUser
     // e.preventDefault()
     updateProfile(currentUser, updates)
@@ -48,13 +49,17 @@ const LoggedIn = ({ user }) => {
       .catch((e) => {
         console.log(e)
       })
+      .finally(()=> setLoader(false))
   }
 
   const deleteUserAccount = ()=> {
+    setLoader(true)
     const currentUser = auth.currentUser
     deleteUser(currentUser).then(()=> {
       dispatch(logout())
-    }).catch((e)=> console.log(e))
+    })
+    .catch((e)=> console.log(e))
+    .finally(()=> setLoader(false))
   }
 
   // console.log('loggedin', user)
@@ -69,7 +74,7 @@ const LoggedIn = ({ user }) => {
         <h2>Hello {user.displayName || user.email.slice(0, user.email.indexOf('@'))}</h2>
         <button className='logout' onClick={signOutUser}>Log out</button>
       </div>
-      <div className="updateProfile">
+      <div className="updateProfile" style={loader ? {filter: 'blur(5px)'} : {}}>
         <div className='form'>
           <img src={updates.photoURL || img} alt="" />
           {/* <input type="image" src={img} alt="" /> */}

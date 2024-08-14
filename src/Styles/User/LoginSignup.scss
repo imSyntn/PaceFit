@@ -27,6 +27,15 @@
         color: rgb(0, 0, 0);
         // mix-blend-mode: difference;
     }
+    >.fetchError {
+        position: absolute;
+        top: 34px;
+        left: 0;
+        text-align: end;
+        padding-right: 10px;
+        color: red;
+        // right: 0px;
+    }
 
     >label {
         font-size: 18px;
